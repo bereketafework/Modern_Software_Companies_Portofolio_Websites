@@ -69,8 +69,17 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <Link href="/" className="flex items-center" aria-label="Smart Tech Solution Home">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-8 w-8 text-primary mr-2">
-              <path d="M12 2L1 9l3 11h16l3-11L12 2zm0 2.38l7.36 5.15-2.18 8.02H6.82l-2.18-8.02L12 4.38zM12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-8 w-8 text-primary mr-2" aria-label="Smart Tech Solution Logo">
+                <path fillRule="evenodd" clipRule="evenodd" d="M5 3C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5ZM5 5H19V19H5V5Z" opacity="0.4"/>
+                <path d="M7 7H9V9H7V7Z"/>
+                <path d="M7 11H9V13H7V11Z"/>
+                <path d="M7 15H9V17H7V15Z"/>
+                <path d="M11 7H13V9H11V7Z"/>
+                <path d="M11 11H13V13H11V11Z"/>
+                <path d="M11 15H13V17H11V15Z"/>
+                <path d="M15 7H17V9H15V7Z"/>
+                <path d="M15 11H17V13H15V11Z"/>
+                <path d="M15 15H17V17H15V15Z"/>
             </svg>
             <span className="text-2xl font-bold text-foreground">
               Smart<span className="text-primary">Tech</span>
@@ -92,8 +101,17 @@ export default function Header() {
                 <SheetHeader className="p-6 border-b">
                   <SheetTitle>
                     <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7 text-primary mr-1.5">
-                        <path d="M12 2L1 9l3 11h16l3-11L12 2zm0 2.38l7.36 5.15-2.18 8.02H6.82l-2.18-8.02L12 4.38zM12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7 text-primary mr-1.5" aria-label="Smart Tech Solution Logo">
+                          <path fillRule="evenodd" clipRule="evenodd" d="M5 3C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5ZM5 5H19V19H5V5Z" opacity="0.4"/>
+                          <path d="M7 7H9V9H7V7Z"/>
+                          <path d="M7 11H9V13H7V11Z"/>
+                          <path d="M7 15H9V17H7V15Z"/>
+                          <path d="M11 7H13V9H11V7Z"/>
+                          <path d="M11 11H13V13H11V11Z"/>
+                          <path d="M11 15H13V17H11V15Z"/>
+                          <path d="M15 7H17V9H15V7Z"/>
+                          <path d="M15 11H17V13H15V11Z"/>
+                          <path d="M15 15H17V17H15V15Z"/>
                       </svg>
                       <span className="text-xl font-bold text-foreground">Smart<span className="text-primary">Tech</span></span>
                     </Link>
