@@ -144,7 +144,7 @@ export default function PortfolioSection() {
     <section id="portfolio" className="py-16 md:py-24 bg-muted/30 dark:bg-muted/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-           <Filter className="h-10 w-10 text-primary mx-auto mb-3" />
+           <Filter className="h-10 w-10 text-primary mx-auto mb-3 hidden sm:block" /> {/* Hidden on small screens */}
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Our Success Stories
           </h2>
@@ -238,4 +238,3 @@ export default function PortfolioSection() {
     </section>
   );
 }
-

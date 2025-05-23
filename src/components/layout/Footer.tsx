@@ -1,19 +1,25 @@
 
 import Link from "next/link";
-import { Github, Linkedin } from "lucide-react"; // Removed Twitter
+import { Github, Linkedin, Send } from "lucide-react"; // Added Send for Telegram
 
 const socialLinks = [
   {
-    href: "https://github.com/BereketAfework", // Placeholder, replace with actual link
+    href: "https://github.com/BereketAfework", 
     icon: Github,
     label: "GitHub",
     ariaLabel: "Bereket Afework on GitHub",
   },
   {
-    href: "https://linkedin.com/in/bereket-afework", // Placeholder, replace with actual link
+    href: "https://linkedin.com/in/bereket-afework", 
     icon: Linkedin,
     label: "LinkedIn",
     ariaLabel: "Bereket Afework on LinkedIn",
+  },
+  {
+    href: "https://t.me/BEsmile",
+    icon: Send, // Using Send icon for Telegram
+    label: "Telegram",
+    ariaLabel: "Bereket Afework on Telegram",
   },
 ];
 

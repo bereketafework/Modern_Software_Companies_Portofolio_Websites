@@ -83,9 +83,8 @@ export default function Header() {
                      </svg>
                      <span className="text-xl font-bold text-foreground">Smart<span className="text-primary">Tech</span></span>
                    </Link>
-                  <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
-                    <X className="h-6 w-6" />
-                  </Button>
+                   {/* The explicit X button was here, it's now removed. 
+                       SheetContent will provide its own default close button. */}
                 </div>
                 <nav className="flex flex-col space-y-3">
                   <NavLinks onItemClick={() => setMobileMenuOpen(false)} />
