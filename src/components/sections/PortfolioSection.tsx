@@ -30,8 +30,8 @@ const projectsData: Project[] = [
     title: "E-commerce Platform Modernization",
     industry: "Retail",
     projectType: "Web App",
-    thumbnailUrl: "https://placehold.co/600x400.png?text=Modern+E-commerce+Platform+UI",
-    aiHint: "online store interface",
+    thumbnailUrl: "https://placehold.co/600x400.png",
+    aiHint: "ecommerce trends", // Updated hint
     clientLogoUrl: "https://placehold.co/100x50.png?text=ClientA",
     clientAiHint: "retail company logo",
     description: "Revamped a legacy e-commerce system, improving performance by 60% and user engagement by 40%.",
@@ -44,8 +44,8 @@ const projectsData: Project[] = [
     title: "Healthcare Data Analytics Dashboard",
     industry: "Healthcare",
     projectType: "Data Platform",
-    thumbnailUrl: "https://placehold.co/600x400.png?text=Healthcare+Analytics+Dashboard+Charts",
-    aiHint: "medical data charts",
+    thumbnailUrl: "https://placehold.co/600x400.png",
+    aiHint: "healthcare dashboard", // Updated hint
     clientLogoUrl: "https://placehold.co/100x50.png?text=ClientB",
     clientAiHint: "healthcare provider logo",
     description: "Developed a secure dashboard for visualizing patient data, enabling better clinical decisions.",
@@ -58,8 +58,8 @@ const projectsData: Project[] = [
     title: "Mobile App for Logistics Management",
     industry: "Logistics",
     projectType: "Mobile App",
-    thumbnailUrl: "https://placehold.co/400x600.png?text=Logistics+Mobile+App+UI",
-    aiHint: "delivery tracking app",
+    thumbnailUrl: "https://placehold.co/400x600.png", // Aspect ratio for mobile
+    aiHint: "logistics app", // Updated hint
     clientLogoUrl: "https://placehold.co/100x50.png?text=ClientC",
     clientAiHint: "logistics company logo",
     description: "Cross-platform mobile app for real-time tracking and fleet management, reducing operational costs.",
@@ -71,8 +71,8 @@ const projectsData: Project[] = [
     title: "AI Powered Recommendation Engine",
     industry: "Entertainment",
     projectType: "Data Platform",
-    thumbnailUrl: "https://placehold.co/600x400.png?text=AI+Content+Recommendations",
-    aiHint: "artificial intelligence network",
+    thumbnailUrl: "https://placehold.co/600x400.png",
+    aiHint: "ai recommendation", // Updated hint
     clientLogoUrl: "https://placehold.co/100x50.png?text=ClientD",
     clientAiHint: "streaming service logo",
     description: "Built an AI recommendation engine that increased user retention by 25% for a streaming service.",
@@ -85,8 +85,8 @@ const projectsData: Project[] = [
     title: "Smart City IoT Solution",
     industry: "Public Sector",
     projectType: "Other", 
-    thumbnailUrl: "https://placehold.co/600x400.png?text=Smart+City+IoT+Network",
-    aiHint: "iot network city",
+    thumbnailUrl: "https://placehold.co/600x400.png",
+    aiHint: "smart city", // Updated hint
     clientLogoUrl: "https://placehold.co/100x50.png?text=CityGov",
     clientAiHint: "government entity logo",
     description: "Developed an IoT platform for managing city infrastructure, improving resource allocation.",
@@ -154,13 +154,13 @@ export default function PortfolioSection() {
                   <Image
                     src={project.thumbnailUrl}
                     alt={project.title}
-                    width={600}
-                    height={400}
+                    width={project.projectType === "Mobile App" ? 400 : 600} // Adjust width based on aspect ratio
+                    height={project.projectType === "Mobile App" ? 600 : 400} // Adjust height based on aspect ratio
                     className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                     data-ai-hint={project.aiHint}
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-                    priority={index < 3} // Prioritize loading for the first few images
+                    priority={index < 3} 
                     loading={index < 3 ? "eager" : "lazy"}
                   />
                 </div>
@@ -210,3 +210,4 @@ export default function PortfolioSection() {
     </section>
   );
 }
+
