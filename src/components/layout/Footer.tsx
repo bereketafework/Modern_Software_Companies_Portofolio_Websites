@@ -10,16 +10,16 @@ const socialLinks = [
     ariaLabel: "Bereket Afework on GitHub",
   },
   {
-    href: "https://linkedin.com/in/bereket-afework", 
+    href: "https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile", 
     icon: Linkedin,
     label: "LinkedIn",
     ariaLabel: "Bereket Afework on LinkedIn",
   },
   {
-    href: "https://t.me/Bksmile", // Changed username
+    href: "https://t.me/Bksmile", 
     icon: Send, 
     label: "Telegram",
-    ariaLabel: "Connect on Telegram", // Updated aria-label
+    ariaLabel: "Connect on Telegram", 
   },
 ];
 
