@@ -12,21 +12,48 @@ export function SoftwareDevelopmentProcessIcon(props: LottiePlaceholderProps) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
-      aria-label="Software Development Process Illustration"
+      aria-label="Abstract Technological Network Illustration"
       role="img"
-      data-ai-hint="coding process"
+      data-ai-hint="digital network abstract"
       {...props}
     >
-      <path d="M16 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
-      <path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
-      <path d="M8 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
-      <path d="M10 8v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V8" />
-      <path d="M14 14v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-2" />
-      <path d="M2 22V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v18" />
-      <path d="M12 18h-1a2 2 0 0 1-2-2V8" />
+      {/* Central Orb */}
+      <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.5" />
+      <circle cx="12" cy="12" r="2.5" strokeWidth="1.5" />
+
+      {/* Outer Nodes and Connections */}
+      <circle cx="6" cy="6" r="1.5" />
+      <line x1="11.5" y1="11.5" x2="6.5" y2="6.5" /> {/* Adjusted to avoid overlap with central orb stroke */}
+
+      <circle cx="18" cy="6" r="1.5" />
+      <line x1="12.5" y1="11.5" x2="17.5" y2="6.5" />
+
+      <circle cx="6" cy="18" r="1.5" />
+      <line x1="11.5" y1="12.5" x2="6.5" y2="17.5" />
+
+      <circle cx="18" cy="18" r="1.5" />
+      <line x1="12.5" y1="12.5" x2="17.5" y2="17.5" />
+
+      <circle cx="4" cy="12" r="1" />
+      <line x1="10" y1="12" x2="5" y2="12" />
+      
+      <circle cx="20" cy="12" r="1" />
+      <line x1="14" y1="12" x2="19" y2="12" />
+
+      <circle cx="12" cy="4" r="1" />
+      <line x1="12" y1="10" x2="12" y2="5" />
+
+      <circle cx="12" cy="20" r="1" />
+      <line x1="12" y1="14" x2="12" y2="19" />
+
+      {/* Subtle background curves suggesting global connection */}
+      <path d="M6 6C8 10, 10 11.5, 12 12" strokeDasharray="2 2" opacity="0.4"/>
+      <path d="M18 6C16 10, 14 11.5, 12 12" strokeDasharray="2 2" opacity="0.4"/>
+      <path d="M6 18C8 14, 10 12.5, 12 12" strokeDasharray="2 2" opacity="0.4"/>
+      <path d="M18 18C16 14, 14 12.5, 12 12" strokeDasharray="2 2" opacity="0.4"/>
     </svg>
   );
 }
