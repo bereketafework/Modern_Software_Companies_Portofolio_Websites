@@ -5,6 +5,7 @@ import { Code, Database, Cloud, TerminalSquare, Search, Palette, Code2, Clipboar
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Text } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 interface Skill {
   name: string;
@@ -172,33 +173,53 @@ export default function TechExpertiseSection() {
             <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-12">
               A transparent and agile approach to ensure project success from concept to launch.
             </p>
+            {/* Main stepper container: md:pt-8 for space above line, md:pb-16 for space for bottom titles */}
             <div className="relative border-l-2 border-primary/50 pl-6 py-8 space-y-16 
-                            md:border-l-0 md:border-t-2 md:flex md:space-y-0 md:space-x-0 md:pt-6 md:pb-8 md:px-4">
-              {developmentProcessSteps.map((step, index) => (
-                <div key={step.title} className="relative md:flex-1 animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
-                  {/* Mobile indicator */}
-                  <div className="absolute -left-[calc(1.5rem+1px)] top-1/2 -translate-y-1/2 md:hidden z-10">
-                    <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground">
-                      <step.icon className="h-6 w-6" />
-                    </div>
-                  </div>
-                  {/* Desktop indicator */}
-                  <div className="hidden md:flex absolute -top-[calc(1.5rem+1px)] left-1/2 -translate-x-1/2 z-10">
-                     <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground">
-                      <step.icon className="h-6 w-6" />
-                    </div>
-                  </div>
-                  
-                  {/* Connecting line dot for mobile */}
-                  <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-primary md:hidden"></div>
-                  {/* Connecting line dot for desktop */}
-                  <div className="hidden md:block absolute -top-[3px] left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-primary"></div>
+                            md:border-l-0 md:border-t-2 md:flex md:space-y-0 md:pt-8 md:pb-16 md:px-4">
+              {developmentProcessSteps.map((step, index) => {
+                const isTitleOnTop = (index + 1) % 2 === 0; // True for 2nd, 4th, 6th item
 
-                  <div className="pl-10 md:pl-0 md:pt-16 md:text-center">
-                    <h4 className="text-xl font-semibold text-primary">{step.title}</h4>
+                return (
+                  <div key={step.title} className="relative md:flex-1 animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
+                    {/* Mobile View: Icon left, Text right */}
+                    <div className="md:hidden flex items-center relative py-2">
+                      <div className="absolute -left-[calc(1.5rem+1px)] top-1/2 -translate-y-1/2 z-10">
+                           <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground">
+                              <step.icon className="h-6 w-6" />
+                          </div>
+                      </div>
+                      <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-primary"></div>
+                      <div className="ml-10 pl-2">
+                        <h4 className="text-xl font-semibold text-primary">{step.title}</h4>
+                      </div>
+                    </div>
+
+                    {/* Desktop View: Icon on line, Text alternating top/bottom */}
+                    <div className="hidden md:block relative text-center">
+                      {/* Desktop Icon (centered on the line) */}
+                      <div className="absolute -top-[calc(1.5rem+1px)] left-1/2 -translate-x-1/2 z-10">
+                        <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground">
+                          <step.icon className="h-6 w-6" />
+                        </div>
+                      </div>
+                      {/* Desktop Connecting line dot */}
+                      <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-primary"></div>
+
+                      {/* Desktop Title */}
+                      {/* Positioned relative to its normal flow, then transformed. Normal flow is centered in this div. */}
+                      {/* Icon's center is effectively at Y=-1.5rem from this div's top content edge. */}
+                      <h4 className={cn(
+                        "text-xl font-semibold text-primary whitespace-nowrap",
+                        isTitleOnTop 
+                          ? "transform -translate-y-16" // Moves up by 4rem (64px)
+                          : "transform translate-y-4 pt-1"   // Moves down by 1rem (16px), pt-1 for slight extra push if needed
+                      )}>
+                        {step.title}
+                      </h4>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
         </div>
 
