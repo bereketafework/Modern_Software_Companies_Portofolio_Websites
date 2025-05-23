@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
-import { Send, MapPin, Phone, Mail } from "lucide-react"; // Removed MessageSquare
+import { Send, MapPin, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import { Card as ShadCard } from "@/components/ui/card"; 
 
@@ -154,12 +154,11 @@ export default function ContactSection() {
                <h3 className="text-xl font-semibold text-card-foreground p-6 pb-0">Our Location</h3>
               <div className="aspect-w-16 aspect-h-9 bg-muted">
                   <Image
-                    src="https://placehold.co/600x400.png?text=Map+of+Tikur+Anbessa+Hospital+Area"
+                    src="https://images.unsplash.com/photo-1571946080923-a81668948f52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8bWFwJTIwb2YlMjBhZGRpcyUyMGFiYWJhfGVufDB8fHx8MTc0ODAwMjQ4Nnww&ixlib=rb-4.1.0&q=80&w=1080"
                     alt="Office Location Map - Tikur Anbessa Hospital Area, Addis Ababa"
                     width={600}
                     height={400}
                     className="object-cover w-full h-full"
-                    data-ai-hint="Addis Ababa map hospital"
                     priority={false} 
                     loading="lazy"
                   />
