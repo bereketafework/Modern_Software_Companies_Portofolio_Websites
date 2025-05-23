@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
-import { Send, MapPin, Phone, Mail } from "lucide-react";
+import { Send, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Card as ShadCard } from "@/components/ui/card"; 
 
@@ -150,24 +150,36 @@ export default function ContactSection() {
               </div>
             </Card>
             
-            <Card className="shadow-lg bg-card overflow-hidden">
-               <h3 className="text-xl font-semibold text-card-foreground p-6 pb-0">Our Location</h3>
-              <div className="aspect-w-16 aspect-h-9 bg-muted">
-                  <Image
-                    src="https://images.unsplash.com/photo-1571946080923-a81668948f52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8bWFwJTIwb2YlMjBhZGRpcyUyMGFiYWJhfGVufDB8fHx8MTc0ODAwMjQ4Nnww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Office Location Map - Tikur Anbessa Hospital Area, Addis Ababa"
-                    width={600}
-                    height={400}
-                    className="object-cover w-full h-full"
-                    priority={false} 
-                    loading="lazy"
-                  />
-              </div>
+            <Card className="shadow-lg bg-card overflow-hidden group">
+              <Link 
+                href="https://maps.app.goo.gl/iycW7Y2yKFWkD8HK6" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="View location on Google Maps"
+              >
+                <div className="p-6 pb-2 flex justify-between items-center">
+                    <h3 className="text-xl font-semibold text-card-foreground">Our Location</h3>
+                    <ExternalLink className="h-5 w-5 text-primary group-hover:text-primary/80 transition-colors" />
+                </div>
+                <div className="aspect-w-16 aspect-h-9 bg-muted group-hover:opacity-90 transition-opacity">
+                    <Image
+                      src="https://images.unsplash.com/photo-1571946080923-a81668948f52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8bWFwJTIwb2YlMjBhZGRpcyUyMGFiYWJhfGVufDB8fHx8MTc0ODAwMjQ4Nnww&ixlib=rb-4.1.0&q=80&w=1080"
+                      alt="Map showing Tikur Anbessa Hospital Area, Addis Ababa"
+                      width={600}
+                      height={400}
+                      className="object-cover w-full h-full"
+                      data-ai-hint="Addis Ababa map hospital"
+                      priority={false} 
+                      loading="lazy"
+                    />
+                </div>
+                <p className="p-4 text-xs text-center text-muted-foreground">Click to view on Google Maps</p>
+              </Link>
             </Card>
           </div>
         </div>
       </div>
-      {/* The floating chat button is now handled by Chatbot.tsx in RootLayout */}
     </section>
   );
 }
+
