@@ -8,7 +8,8 @@ import Footer from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import ScrollToTopButton from "@/components/elements/ScrollToTopButton";
 import ScrollProgressBar from "@/components/elements/ScrollProgressBar";
-import Chatbot from "@/components/elements/Chatbot"; // Added Chatbot import
+import Chatbot from "@/components/elements/Chatbot";
+import { SettingsProvider } from "@/contexts/SettingsContext"; // Added SettingsProvider import
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,21 +43,23 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground rounded-md"
-          >
-            Skip to main content
-          </a>
-          <ScrollProgressBar />
-          <Header />
-          <main id="main-content" className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-          <Toaster />
-          <ScrollToTopButton />
-          <Chatbot /> {/* Added Chatbot component */}
+          <SettingsProvider> {/* Added SettingsProvider */}
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground rounded-md"
+            >
+              Skip to main content
+            </a>
+            <ScrollProgressBar />
+            <Header />
+            <main id="main-content" className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+            <Toaster />
+            <ScrollToTopButton />
+            <Chatbot />
+          </SettingsProvider> {/* Closed SettingsProvider */}
         </ThemeProvider>
       </body>
     </html>

@@ -3,17 +3,18 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, Briefcase, Code, Users, MessageSquare, HomeIcon } from "lucide-react"; // Removed X as it's not used
+import { Menu, Briefcase, Code, Users, MessageSquare, HomeIcon, Settings as SettingsIcon } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"; // Added SheetHeader, SheetTitle
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const navItems = [
   { href: "/", label: "Home", icon: HomeIcon },
-  { href: "#services", label: "Services", icon: Briefcase },
-  { href: "#portfolio", label: "Portfolio", icon: Code },
-  { href: "#about", label: "About Us", icon: Users }, // Combines Tech Expertise & Dev Process
-  { href: "#contact", label: "Contact", icon: MessageSquare },
+  { href: "/#services", label: "Services", icon: Briefcase },
+  { href: "/#portfolio", label: "Portfolio", icon: Code },
+  { href: "/#about", label: "About Us", icon: Users },
+  { href: "/#contact", label: "Contact", icon: MessageSquare },
+  { href: "/settings", label: "Settings", icon: SettingsIcon },
 ];
 
 export default function Header() {
@@ -34,7 +35,19 @@ export default function Header() {
         <Link
           key={item.label}
           href={item.href}
-          onClick={onItemClick}
+          onClick={(e) => {
+            if (item.href.startsWith("/#")) { // Smooth scroll for hash links
+              e.preventDefault();
+              const targetId = item.href.substring(2);
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+            if (onItemClick) {
+              onItemClick();
+            }
+          }}
           className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors px-3 py-2 rounded-md flex items-center gap-2"
           aria-label={item.label}
         >
@@ -85,7 +98,6 @@ export default function Header() {
                       <span className="text-xl font-bold text-foreground">Smart<span className="text-primary">Tech</span></span>
                     </Link>
                   </SheetTitle>
-                  {/* You could add a <SheetDescription>Main Navigation</SheetDescription> here if desired */}
                 </SheetHeader>
                 <div className="p-6 flex-grow overflow-y-auto">
                   <nav className="flex flex-col space-y-3">

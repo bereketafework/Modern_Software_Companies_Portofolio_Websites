@@ -7,7 +7,8 @@ import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, List, Globe, DatabaseZap, Smartphone, Filter } from "lucide-react"; 
+import { ExternalLink, List, Globe, DatabaseZap, Smartphone, Filter, Settings } from "lucide-react"; 
+import { useSettings } from '@/contexts/SettingsContext'; // Import useSettings
 
 interface Project {
   id: string;
@@ -132,6 +133,7 @@ const filterOptions = [
 
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
+  const { portfolioItemsPerPage } = useSettings(); // Consume settings
 
   const filteredProjects = useMemo(() => {
     if (activeFilter === "All") {
@@ -140,11 +142,19 @@ export default function PortfolioSection() {
     return projectsData.filter(project => project.projectType === activeFilter);
   }, [activeFilter]);
 
+  const projectsToDisplay = useMemo(() => {
+    // 0 means show all
+    if (portfolioItemsPerPage === 0 || portfolioItemsPerPage >= filteredProjects.length) { 
+      return filteredProjects;
+    }
+    return filteredProjects.slice(0, portfolioItemsPerPage);
+  }, [filteredProjects, portfolioItemsPerPage]);
+
   return (
     <section id="portfolio" className="py-16 md:py-24 bg-muted/30 dark:bg-muted/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-           <Filter className="h-10 w-10 text-primary mx-auto mb-3 hidden sm:block" /> {/* Hidden on small screens */}
+           <Filter className="h-10 w-10 text-primary mx-auto mb-3 hidden sm:block" />
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Our Success Stories
           </h2>
@@ -153,7 +163,7 @@ export default function PortfolioSection() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center items-center gap-2 mb-10">
           {filterOptions.map(option => (
             <Button
               key={option.value}
@@ -166,13 +176,27 @@ export default function PortfolioSection() {
               {option.label}
             </Button>
           ))}
+           {/* Link to settings page for item count */}
+           <Button variant="ghost" asChild size="sm" className="text-sm text-muted-foreground hover:text-primary">
+                <Link href="/settings" aria-label="Adjust items per page">
+                    <Settings className="mr-2 h-4 w-4" /> Items per page
+                </Link>
+            </Button>
         </div>
         
-        {filteredProjects.length === 0 ? (
-          <p className="text-center text-lg text-foreground/70">No projects found for this filter.</p>
-        ) : (
+        {projectsToDisplay.length === 0 && filteredProjects.length > 0 && (
+          <p className="text-center text-lg text-foreground/70 py-8">
+            No projects match the current filter for the selected number of items.
+            <br />Try adjusting the items per page in <Link href="/settings" className="text-primary hover:underline">Settings</Link> or select a different filter.
+          </p>
+        )}
+        {projectsToDisplay.length === 0 && filteredProjects.length === 0 && (
+          <p className="text-center text-lg text-foreground/70 py-8">No projects found for this filter.</p>
+        )}
+
+        {projectsToDisplay.length > 0 && (
           <div className="column-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-            {filteredProjects.map((project, index) => (
+            {projectsToDisplay.map((project, index) => (
               <Card
                 key={project.id}
                 className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out break-inside-avoid animate-fade-in hover:scale-[1.02] group"
