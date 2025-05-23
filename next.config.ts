@@ -40,6 +40,30 @@ const nextConfig: NextConfig = {
         hostname: 'www.keysight.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cepr.org',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'blog.fleetx.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'd15shllkswkct0.cloudfront.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'sii.pl',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
