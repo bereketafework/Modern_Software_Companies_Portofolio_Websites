@@ -52,12 +52,12 @@ const testimonials: Testimonial[] = [
 ];
 
 const clientLogos = [
-  { name: "Google", logoUrl: "https://placehold.co/150x60.png?text=Google", aiHint: "Google logo abstract" },
-  { name: "Microsoft", logoUrl: "https://placehold.co/150x60.png?text=Microsoft", aiHint: "Microsoft logo abstract" },
-  { name: "Tesla", logoUrl: "https://placehold.co/150x60.png?text=Tesla", aiHint: "Tesla logo abstract" },
-  { name: "Meta", logoUrl: "https://placehold.co/150x60.png?text=Meta", aiHint: "Meta logo abstract" },
-  { name: "Amazon", logoUrl: "https://placehold.co/150x60.png?text=Amazon", aiHint: "Amazon logo abstract" },
-  { name: "Netflix", logoUrl: "https://placehold.co/150x60.png?text=Netflix", aiHint: "Netflix logo abstract" },
+  { name: "Client A (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
+  { name: "Client B (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
+  { name: "Client C (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
+  { name: "Client D (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
+  { name: "Client E (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
+  { name: "Client F (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
 ];
 
 const successMetrics = [

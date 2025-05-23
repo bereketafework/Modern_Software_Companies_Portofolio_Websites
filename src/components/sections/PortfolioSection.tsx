@@ -112,7 +112,7 @@ const projectsData: Project[] = [
     title: "Cloud Migration for SaaS Company",
     industry: "Technology",
     projectType: "Other",
-    thumbnailUrl: "https://placehold.co/600x400.png",
+    thumbnailUrl: "https://www.openaccessgovernment.org/wp-content/uploads/2020/02/dreamstime_xxl_143701086.jpg",
     aiHint: "cloud infrastructure diagram",
     clientLogoUrl: "https://placehold.co/100x50.png",
     clientAiHint: "saas company logo",

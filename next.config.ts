@@ -64,6 +64,12 @@ const nextConfig: NextConfig = {
         hostname: 'sii.pl',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.openaccessgovernment.org',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
