@@ -52,12 +52,12 @@ const testimonials: Testimonial[] = [
 ];
 
 const clientLogos = [
-  { name: "Client A (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
-  { name: "Client B (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
-  { name: "Client C (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
-  { name: "Client D (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
-  { name: "Client E (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
-  { name: "Client F (Tesla)", logoUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", aiHint: "Tesla logo abstract" },
+  { name: "Google", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png", aiHint: "Google logo" },
+  { name: "Microsoft", logoUrl: "https://threatconnect.com/wp-content/uploads/2019/05/Microsoft-Logo.png", aiHint: "Microsoft logo" },
+  { name: "GitHub", logoUrl: "https://nextgen.group/hubfs/github_PNG65.png", aiHint: "GitHub logo" },
+  { name: "Apple", logoUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/79/94/bc7994ae-e7a5-241f-403e-281e827d2427/ProductionAppIcon-0-0-1x_U007emarketing-0-8-0-0-0-85-220.png/1200x630wa.png", aiHint: "Apple logo" },
+  { name: "Amazon", logoUrl: "https://placehold.co/120x50.png", aiHint: "Amazon logo" },
+  { name: "Netflix", logoUrl: "https://placehold.co/120x50.png", aiHint: "Netflix logo" },
 ];
 
 const successMetrics = [
@@ -214,4 +214,3 @@ export default function TestimonialsSection() {
     </section>
   );
 }
-
