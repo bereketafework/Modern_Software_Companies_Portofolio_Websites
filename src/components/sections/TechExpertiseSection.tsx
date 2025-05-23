@@ -174,9 +174,9 @@ export default function TechExpertiseSection() {
               A transparent and agile approach to ensure project success from concept to launch.
             </p>
             <div className="relative border-l-2 border-primary/50 pl-6 py-8 space-y-16 
-                            md:border-l-0 md:border-t-2 md:flex md:space-y-0 md:pt-8 md:pb-16 md:px-4">
+                            md:border-l-0 md:border-t-2 md:flex md:space-y-0 md:min-h-[16rem] md:items-center md:px-4">
               {developmentProcessSteps.map((step, index) => {
-                const isTitleOnTop = (index + 1) % 2 === 0; 
+                const isAlternatingUp = (index + 1) % 2 === 0; 
 
                 return (
                   <div key={step.title} className="relative md:flex-1 animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
@@ -192,23 +192,21 @@ export default function TechExpertiseSection() {
                       </div>
                     </div>
 
-                    {/* Desktop View: Icon on line, Text alternating top/bottom */}
+                    {/* Desktop View: Icon & Title group alternating above/below the line */}
                     <div className="hidden md:block relative text-center">
-                      {/* Desktop Icon (centered on the line) */}
-                      <div className="absolute -top-[calc(1.5rem+1px)] left-1/2 -translate-x-1/2 z-10">
+                       <div className={cn(
+                        "flex flex-col items-center",
+                        isAlternatingUp 
+                          ? "mb-16" // Pushes the group UP from the timeline
+                          : "mt-16"  // Pushes the group DOWN from the timeline
+                      )}>
                         <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground">
                           <step.icon className="h-6 w-6" />
                         </div>
+                        <h4 className="mt-2 text-xl font-semibold text-primary whitespace-nowrap">
+                          {step.title}
+                        </h4>
                       </div>
-                      {/* Desktop Title */}
-                      <h4 className={cn(
-                        "text-xl font-semibold text-primary whitespace-nowrap",
-                        isTitleOnTop 
-                          ? "transform -translate-y-16" 
-                          : "transform translate-y-4 pt-1"   
-                      )}>
-                        {step.title}
-                      </h4>
                     </div>
                   </div>
                 );
