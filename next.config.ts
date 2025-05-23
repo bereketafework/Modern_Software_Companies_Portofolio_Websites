@@ -94,6 +94,12 @@ const nextConfig: NextConfig = {
         hostname: 'is1-ssl.mzstatic.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ih1.redbubble.net',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

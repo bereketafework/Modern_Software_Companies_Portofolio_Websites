@@ -91,6 +91,7 @@ const CustomizedAxisTick = (props: any) => {
   );
 };
 
+const developmentProcessSteps = ["Discovery", "Design", "Development", "Testing", "Deployment", "Support"];
 
 export default function TechExpertiseSection() {
   const { theme } = useTheme();
@@ -156,17 +157,23 @@ export default function TechExpertiseSection() {
         
         <div className="mt-20 text-center">
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Our Development Process</h3>
-            <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-12">
               A transparent and agile approach to ensure project success from concept to launch.
             </p>
-            <div className="relative border-l-2 border-primary pl-8 py-4 space-y-12 md:border-l-0 md:border-t-2 md:flex md:space-y-0 md:space-x-8 md:py-8 md:pl-0">
-              {["Discovery", "Design", "Development", "Testing", "Deployment", "Support"].map((step, index) => (
+            <div className="relative border-l-2 border-primary pl-12 py-8 space-y-16 
+                            md:border-l-0 md:border-t-2 md:flex md:space-y-0 md:space-x-6 md:py-12 md:pl-0">
+              {developmentProcessSteps.map((step, index) => (
                 <div key={step} className="relative md:flex-1 animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
-                  <div className="absolute -left-[38px] top-0 h-6 w-6 rounded-full bg-primary border-4 border-background md:hidden"></div>
-                  <div className="hidden md:block absolute -top-[15px] left-1/2 -translate-x-1/2 h-6 w-6 rounded-full bg-primary border-4 border-background"></div>
-                  <div className="md:text-center">
-                    <h4 className="text-lg font-semibold text-primary mb-1">{`0${index + 1}. ${step}`}</h4>
-                    <p className="text-sm text-foreground/70">Details about the {step.toLowerCase()} phase would go here, explaining our approach.</p>
+                  {/* Mobile indicator with number */}
+                  <div className="absolute -left-[calc(theme(spacing.10)/2)] top-0 h-10 w-10 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground font-bold text-base md:hidden z-10">
+                    {index + 1}
+                  </div>
+                  {/* Desktop indicator with number */}
+                  <div className="hidden md:flex absolute -top-[calc(theme(spacing.10)/2+theme(borderWidth.2))] left-1/2 -translate-x-1/2 h-10 w-10 rounded-full bg-primary border-4 border-background items-center justify-center text-primary-foreground font-bold text-base z-10">
+                    {index + 1}
+                  </div>
+                  <div className="md:text-center md:pt-12"> {/* Added pt-12 for desktop to give space for the circle above */}
+                    <h4 className="text-xl font-semibold text-primary">{step}</h4>
                   </div>
                 </div>
               ))}

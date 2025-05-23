@@ -55,9 +55,8 @@ const clientLogos = [
   { name: "Google", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png", aiHint: "Google logo" },
   { name: "Microsoft", logoUrl: "https://threatconnect.com/wp-content/uploads/2019/05/Microsoft-Logo.png", aiHint: "Microsoft logo" },
   { name: "GitHub", logoUrl: "https://nextgen.group/hubfs/github_PNG65.png", aiHint: "GitHub logo" },
-  { name: "Apple", logoUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/79/94/bc7994ae-e7a5-241f-403e-281e827d2427/ProductionAppIcon-0-0-1x_U007emarketing-0-8-0-0-0-85-220.png/1200x630wa.png", aiHint: "Apple logo" },
-  { name: "Amazon", logoUrl: "https://placehold.co/120x50.png", aiHint: "Amazon logo" },
-  { name: "Netflix", logoUrl: "https://placehold.co/120x50.png", aiHint: "Netflix logo" },
+  { name: "Apple", logoUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8e/fb/c1/8efbc1ca-8c84-1eea-d8c9-c2fa4d0a9612/AppIcon-0-1x_U007emarketing-0-8-0-85-220-0.png/1200x600wa.png", aiHint: "Apple logo" },
+  { name: "Redbubble Design", logoUrl: "https://ih1.redbubble.net/image.4738350686.1489/flat,750x,075,f-pad,750x1000,f8f8f8.jpg", aiHint: "Creative design logo" },
 ];
 
 const successMetrics = [
@@ -195,15 +194,15 @@ export default function TestimonialsSection() {
         <div className="text-center mb-8">
             <h3 className="text-xl font-semibold text-foreground mb-6">Trusted by Industry Leaders</h3>
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
+        <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-8">
           {clientLogos.map((client, index) => (
             <div key={client.name} className="animate-fade-in group" style={{ animationDelay: `${index * 100}ms` }}>
               <Image
                 src={client.logoUrl}
                 alt={client.name}
-                width={120}
-                height={50}
-                className="object-contain h-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out opacity-60 group-hover:opacity-100 group-hover:scale-105 rounded-md"
+                width={130} // Increased from 120
+                height={55}  // Increased from 50, adjust as needed for aspect ratio
+                className="object-contain h-12 filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out opacity-60 group-hover:opacity-100 group-hover:scale-105 rounded-md"
                 data-ai-hint={client.aiHint}
                 loading="lazy"
               />
