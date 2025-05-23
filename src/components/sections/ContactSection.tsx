@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Send, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import { Send, MapPin, Phone, Mail, ExternalLink, Clock } from "lucide-react";
 import Link from "next/link";
 import { Card as ShadCard } from "@/components/ui/card"; 
 
@@ -125,7 +125,7 @@ export default function ContactSection() {
                   <MapPin className="h-6 w-6 text-primary mr-3 mt-1 shrink-0" />
                   <div>
                     <h4 className="font-medium text-card-foreground">Our Office</h4>
-                    <p>Tikur Anbessa Hospital Area, Addis Ababa, Ethiopia</p>
+                    <p>Addis Ababa, Ethiopia</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -141,9 +141,18 @@ export default function ContactSection() {
                   <Phone className="h-6 w-6 text-primary mr-3 mt-1 shrink-0" />
                   <div>
                     <h4 className="font-medium text-card-foreground">Call Us</h4>
-                    <Link href="tel:+251912345678" className="hover:text-primary transition-colors">
-                      +251 912 345 678
+                    <Link href="tel:+251931555192" className="hover:text-primary transition-colors">
+                      +251 931 555 192
                     </Link>
+                  </div>
+                </div>
+                 <div className="flex items-start">
+                  <Clock className="h-6 w-6 text-primary mr-3 mt-1 shrink-0" />
+                  <div>
+                    <h4 className="font-medium text-card-foreground">Working Hours</h4>
+                    <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
+                    <p>Saturday: 9:00 AM - 1:00 PM</p>
+                    <p>Sunday: Closed</p>
                   </div>
                 </div>
               </div>

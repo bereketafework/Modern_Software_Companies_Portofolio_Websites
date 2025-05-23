@@ -1,7 +1,7 @@
 
 "use client";
 import type { SVGProps } from "react";
-import { Code, Database, Cloud, TerminalSquare } from "lucide-react";
+import { Code, Database, Cloud, TerminalSquare, Search, Palette, Code2, ClipboardCheck, Rocket, LifeBuoy, type LucideIcon } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Text } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTheme } from "next-themes";
@@ -91,7 +91,19 @@ const CustomizedAxisTick = (props: any) => {
   );
 };
 
-const developmentProcessSteps = ["Discovery", "Design", "Development", "Testing", "Deployment", "Support"];
+interface DevelopmentStep {
+  title: string;
+  icon: LucideIcon;
+}
+
+const developmentProcessSteps: DevelopmentStep[] = [
+  { title: "Discovery", icon: Search },
+  { title: "Design", icon: Palette },
+  { title: "Development", icon: Code2 },
+  { title: "Testing", icon: ClipboardCheck },
+  { title: "Deployment", icon: Rocket },
+  { title: "Support", icon: LifeBuoy },
+];
 
 export default function TechExpertiseSection() {
   const { theme } = useTheme();
@@ -160,20 +172,30 @@ export default function TechExpertiseSection() {
             <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-12">
               A transparent and agile approach to ensure project success from concept to launch.
             </p>
-            <div className="relative border-l-2 border-primary pl-12 py-8 space-y-16 
-                            md:border-l-0 md:border-t-2 md:flex md:space-y-0 md:space-x-6 md:py-12 md:pl-0">
+            <div className="relative border-l-2 border-primary/50 pl-6 py-8 space-y-16 
+                            md:border-l-0 md:border-t-2 md:flex md:space-y-0 md:space-x-0 md:pt-6 md:pb-8 md:px-4">
               {developmentProcessSteps.map((step, index) => (
-                <div key={step} className="relative md:flex-1 animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
-                  {/* Mobile indicator with number */}
-                  <div className="absolute -left-[calc(theme(spacing.10)/2)] top-0 h-10 w-10 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground font-bold text-base md:hidden z-10">
-                    {index + 1}
+                <div key={step.title} className="relative md:flex-1 animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
+                  {/* Mobile indicator */}
+                  <div className="absolute -left-[calc(1.5rem+1px)] top-1/2 -translate-y-1/2 md:hidden z-10">
+                    <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground">
+                      <step.icon className="h-6 w-6" />
+                    </div>
                   </div>
-                  {/* Desktop indicator with number */}
-                  <div className="hidden md:flex absolute -top-[calc(theme(spacing.10)/2+theme(borderWidth.2))] left-1/2 -translate-x-1/2 h-10 w-10 rounded-full bg-primary border-4 border-background items-center justify-center text-primary-foreground font-bold text-base z-10">
-                    {index + 1}
+                  {/* Desktop indicator */}
+                  <div className="hidden md:flex absolute -top-[calc(1.5rem+1px)] left-1/2 -translate-x-1/2 z-10">
+                     <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground">
+                      <step.icon className="h-6 w-6" />
+                    </div>
                   </div>
-                  <div className="md:text-center md:pt-12"> {/* Added pt-12 for desktop to give space for the circle above */}
-                    <h4 className="text-xl font-semibold text-primary">{step}</h4>
+                  
+                  {/* Connecting line dot for mobile */}
+                  <div className="absolute -left-[3px] top-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-primary md:hidden"></div>
+                  {/* Connecting line dot for desktop */}
+                  <div className="hidden md:block absolute -top-[3px] left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-primary"></div>
+
+                  <div className="pl-10 md:pl-0 md:pt-16 md:text-center">
+                    <h4 className="text-xl font-semibold text-primary">{step.title}</h4>
                   </div>
                 </div>
               ))}
@@ -184,3 +206,4 @@ export default function TechExpertiseSection() {
     </section>
   );
 }
+
