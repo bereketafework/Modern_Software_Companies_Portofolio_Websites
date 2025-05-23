@@ -173,32 +173,31 @@ export default function TechExpertiseSection() {
             <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-12">
               A transparent and agile approach to ensure project success from concept to launch.
             </p>
-            <div className="relative border-l-2 border-primary/50 pl-6 py-8 space-y-16 
-                            md:border-l-0 md:border-t-2 md:flex md:space-y-0 md:min-h-[16rem] md:items-center md:px-4">
+            {/* Stepper Container: Removed border-l-2, pl-6, md:border-l-0, md:border-t-2 */}
+            <div className="relative py-8 space-y-16 md:flex md:space-y-0 md:min-h-[16rem] md:items-center md:px-4">
               {developmentProcessSteps.map((step, index) => {
+                // For desktop: Alternate title above/below the (now invisible) line
                 const isAlternatingUp = (index + 1) % 2 === 0; 
 
                 return (
                   <div key={step.title} className="relative md:flex-1 animate-slide-up" style={{ animationDelay: `${index * 150}ms` }}>
-                    {/* Mobile View: Icon left, Text right */}
-                    <div className="md:hidden flex items-center relative py-2">
-                      <div className="absolute -left-[calc(1.5rem+1px)] top-1/2 -translate-y-1/2 z-10">
-                           <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground">
-                              <step.icon className="h-6 w-6" />
-                          </div>
+                    {/* Mobile View: Icon centered above title */}
+                    <div className="md:hidden flex flex-col items-center text-center py-2">
+                      <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground mb-2">
+                          <step.icon className="h-6 w-6" />
                       </div>
-                      <div className="ml-10 pl-2">
+                      <div>
                         <h4 className="text-xl font-semibold text-primary">{step.title}</h4>
                       </div>
                     </div>
 
-                    {/* Desktop View: Icon & Title group alternating above/below the line */}
+                    {/* Desktop View: Icon & Title group alternating above/below the central axis */}
                     <div className="hidden md:block relative text-center">
                        <div className={cn(
                         "flex flex-col items-center",
                         isAlternatingUp 
-                          ? "mb-16" // Pushes the group UP from the timeline
-                          : "mt-16"  // Pushes the group DOWN from the timeline
+                          ? "mb-16" // Pushes the (Icon + Title) group UP from the central axis
+                          : "mt-16"  // Pushes the (Icon + Title) group DOWN from the central axis
                       )}>
                         <div className="h-12 w-12 rounded-full bg-primary border-4 border-background flex items-center justify-center text-primary-foreground">
                           <step.icon className="h-6 w-6" />
