@@ -7,7 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import Image from "next/image";
 import { Send, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Card as ShadCard } from "@/components/ui/card"; 
@@ -150,21 +149,43 @@ export default function ContactSection() {
               </div>
             </Card>
             
-            <Card className="shadow-lg bg-card group hover:bg-muted/20 transition-colors duration-200">
+            <Card className="shadow-lg bg-card group hover:bg-muted/20 transition-colors duration-200 p-6">
               <Link 
                 href="https://maps.app.goo.gl/iycW7Y2yKFWkD8HK6" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="View location on Google Maps"
-                className="block p-6"
+                className="block"
               >
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center mb-4">
                     <h3 className="text-xl font-semibold text-card-foreground">Our Location</h3>
                     <ExternalLink className="h-5 w-5 text-primary group-hover:text-primary/80 transition-colors" />
                 </div>
-                {/* Image and its container div removed */}
-                <p className="mt-2 text-sm text-center text-muted-foreground">Click to view on Google Maps</p>
               </Link>
+              <div className="aspect-w-16 aspect-h-9">
+                <iframe
+                  src="https://maps.google.com/maps?q=Tikur%20Anbessa%20Specialized%20Hospital%2C%20Addis%20Ababa&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border:0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Office Location Map Preview"
+                  className="w-full h-64 rounded-md shadow-md"
+                  data-ai-hint="embedded map addis ababa hospital"
+                ></iframe>
+              </div>
+              <p className="mt-3 text-sm text-center text-muted-foreground">
+                <Link 
+                  href="https://maps.app.goo.gl/iycW7Y2yKFWkD8HK6" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:underline hover:text-primary"
+                >
+                  Click to view full map
+                </Link>
+              </p>
             </Card>
           </div>
         </div>
@@ -172,3 +193,4 @@ export default function ContactSection() {
     </section>
   );
 }
+
