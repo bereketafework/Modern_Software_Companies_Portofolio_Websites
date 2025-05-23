@@ -41,7 +41,7 @@ Available FAQs:
   A: Smart Tech Solution is located in the Tikur Anbessa Hospital Area, Addis Ababa, Ethiopia.
 
 - Q: How can I contact Smart Tech Solution?
-  A: You can contact us via email at info@smarttechsolution.dev, call us at +251 931 555 192, or use the contact form on our website.
+  A: You can contact us via email at bereketbeki64@gmail.com, call us at +251 931 555 192, or use the contact form on our website.
 
 - Q: What technologies does Smart Tech Solution specialize in?
   A: We specialize in a wide range of modern technologies including React, Next.js, Node.js, Python (Django/Flask), Java (Spring Boot), Go, cloud platforms like AWS, GCP, and Azure, as well as DevOps tools like Docker, Kubernetes, and CI/CD pipelines. You can find more details in the "Technology Stack & Expertise" section of our website.
@@ -62,14 +62,14 @@ Available FAQs:
   A: Yes, we offer various post-launch support and maintenance packages. These can include bug fixes, performance monitoring, security updates, and feature enhancements to ensure your application runs smoothly and stays relevant.
 
 - Q: How do I start a project with Smart Tech Solution?
-  A: The best way to start is to reach out to us! You can use the contact form on our website, send an email to info@smarttechsolution.dev, or call us at +251 931 555 192. We'll schedule an initial consultation (free of charge) to discuss your ideas, requirements, and how we can help.
+  A: The best way to start is to reach out to us! You can use the contact form on our website, send an email to bereketbeki64@gmail.com, or call us at +251 931 555 192. We'll schedule an initial consultation (free of charge) to discuss your ideas, requirements, and how we can help.
 
 - Q: What is your development process like?
   A: We follow an agile development process that typically includes stages like Discovery (understanding your needs), Design (UI/UX and architecture), Development (coding and implementation), Testing (QA and bug fixing), Deployment (launching your product), and ongoing Support. We believe in transparent communication and collaboration throughout the project lifecycle.
 
 User's question: {{{question}}}
 
-Based on the FAQs, provide a concise answer. If the question is not covered, or you cannot confidently answer, state that you cannot provide the information and suggest they contact Smart Tech Solution directly at info@smarttechsolution.dev or +251 931 555 192.
+Based on the FAQs, provide a concise answer. If the question is not covered, or you cannot confidently answer, state that you cannot provide the information and suggest they contact Smart Tech Solution directly at bereketbeki64@gmail.com or +251 931 555 192.
 `,
 });
 
@@ -83,13 +83,13 @@ const faqChatFlow = ai.defineFlow(
     const { output } = await faqPrompt(input);
     if (!output || !output.answer || output.answer.trim() === "") {
       return { 
-        answer: "I'm sorry, I couldn't find a specific answer to your question in my current knowledge base. For more detailed inquiries or if your question isn't covered, please feel free to contact us directly at info@smarttechsolution.dev or call +251 931 555 192. We'd be happy to assist you!" 
+        answer: "I'm sorry, I couldn't find a specific answer to your question in my current knowledge base. For more detailed inquiries or if your question isn't covered, please feel free to contact us directly at bereketbeki64@gmail.com or call +251 931 555 192. We'd be happy to assist you!" 
       };
     }
     // Check if the AI itself decided it couldn't answer, based on the prompt instructions
     if (output.answer.toLowerCase().includes("contact smart tech solution directly") || output.answer.toLowerCase().includes("cannot provide the information")) {
         return {
-             answer: "I'm sorry, I couldn't find a specific answer to your question in my current knowledge base. For more detailed inquiries or if your question isn't covered, please feel free to contact us directly at info@smarttechsolution.dev or call +251 931 555 192. We'd be happy to assist you!" 
+             answer: "I'm sorry, I couldn't find a specific answer to your question in my current knowledge base. For more detailed inquiries or if your question isn't covered, please feel free to contact us directly at bereketbeki64@gmail.com or call +251 931 555 192. We'd be happy to assist you!" 
         }
     }
     return output;

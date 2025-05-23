@@ -132,8 +132,8 @@ export default function ContactSection() {
                   <Mail className="h-6 w-6 text-primary mr-3 mt-1 shrink-0" />
                   <div>
                     <h4 className="font-medium text-card-foreground">Email Us</h4>
-                    <Link href="mailto:info@smarttechsolution.dev" className="hover:text-primary transition-colors">
-                      info@smarttechsolution.dev
+                    <Link href="mailto:bereketbeki64@gmail.com" className="hover:text-primary transition-colors">
+                      bereketbeki64@gmail.com
                     </Link>
                   </div>
                 </div>
@@ -202,4 +202,3 @@ export default function ContactSection() {
     </section>
   );
 }
-
