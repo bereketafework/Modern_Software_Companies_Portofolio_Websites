@@ -7,7 +7,7 @@ import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, List, Globe, DatabaseZap, Smartphone, Filter, Settings } from "lucide-react"; 
+import { ExternalLink, List, Globe, DatabaseZap, Smartphone, Settings } from "lucide-react"; 
 import { useSettings } from '@/contexts/SettingsContext'; // Import useSettings
 
 interface Project {
@@ -154,7 +154,7 @@ export default function PortfolioSection() {
     <section id="portfolio" className="py-16 md:py-24 bg-muted/30 dark:bg-muted/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-           <Filter className="h-10 w-10 text-primary mx-auto mb-3 hidden sm:block" />
+          {/* Removed Filter icon that was here */}
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Our Success Stories
           </h2>
