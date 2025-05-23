@@ -32,7 +32,7 @@ const projectsData: Project[] = [
     projectType: "Web App",
     thumbnailUrl: "https://placehold.co/600x400.png",
     aiHint: "ecommerce trends",
-    clientLogoUrl: "https://placehold.co/100x50.png",
+    clientLogoUrl: "https://placehold.co/100x50.png", // Changed from toppng.com
     clientAiHint: "retail company logo",
     description: "Revamped a legacy e-commerce system, improving performance by 60% and user engagement by 40%.",
     techStack: ["Next.js", "TypeScript", "AWS", "Stripe"],
@@ -44,9 +44,9 @@ const projectsData: Project[] = [
     title: "Healthcare Data Analytics Dashboard",
     industry: "Healthcare",
     projectType: "Data Platform",
-    thumbnailUrl: "https://placehold.co/600x400.png", // Fixed: Was Google URL
+    thumbnailUrl: "https://placehold.co/600x400.png", 
     aiHint: "healthcare dashboard charts", 
-    clientLogoUrl: "https://placehold.co/100x50.png", // Fixed: Was Google URL
+    clientLogoUrl: "https://placehold.co/100x50.png", 
     clientAiHint: "healthcare provider logo",
     description: "Developed a secure dashboard for visualizing patient data, enabling better clinical decisions.",
     techStack: ["Python (Flask)", "React", "D3.js", "HIPAA Compliance"],
