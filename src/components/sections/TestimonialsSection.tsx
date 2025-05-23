@@ -203,7 +203,7 @@ export default function TestimonialsSection() {
                 alt={client.name}
                 width={120}
                 height={50}
-                className="object-contain h-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out opacity-60 group-hover:opacity-100 group-hover:scale-105"
+                className="object-contain h-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out opacity-60 group-hover:opacity-100 group-hover:scale-105 rounded-md"
                 data-ai-hint={client.aiHint}
                 loading="lazy"
               />
@@ -214,3 +214,4 @@ export default function TestimonialsSection() {
     </section>
   );
 }
+

@@ -112,7 +112,7 @@ const projectsData: Project[] = [
     title: "Cloud Migration for SaaS Company",
     industry: "Technology",
     projectType: "Other",
-    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", // Keeping Tesla as placeholder for this one as no new URL was provided for it specifically
+    thumbnailUrl: "https://placehold.co/600x400.png",
     aiHint: "cloud infrastructure diagram",
     clientLogoUrl: "https://placehold.co/100x50.png",
     clientAiHint: "saas company logo",
