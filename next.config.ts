@@ -25,7 +25,19 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'toppng.com', // Added toppng.com
+        hostname: 'toppng.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.bridgingminds.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.keysight.com',
         port: '',
         pathname: '/**',
       }

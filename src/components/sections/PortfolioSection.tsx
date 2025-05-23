@@ -31,8 +31,8 @@ const projectsData: Project[] = [
     industry: "Retail",
     projectType: "Web App",
     thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png",
-    aiHint: "Tesla logo",
-    clientLogoUrl: "https://placehold.co/100x50.png", 
+    aiHint: "modern e-commerce ui", // Updated AI hint
+    clientLogoUrl: "https://placehold.co/100x50.png?text=ClientA", 
     clientAiHint: "retail company logo",
     description: "Revamped a legacy e-commerce system, improving performance by 60% and user engagement by 40%.",
     techStack: ["Next.js", "TypeScript", "AWS", "Stripe"],
@@ -44,9 +44,9 @@ const projectsData: Project[] = [
     title: "Healthcare Data Analytics Dashboard",
     industry: "Healthcare",
     projectType: "Data Platform",
-    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", 
-    aiHint: "Tesla logo", 
-    clientLogoUrl: "https://placehold.co/100x50.png", 
+    thumbnailUrl: "https://www.bridgingminds.net/wp-content/uploads/2022/01/top-4-benefits-of-using-data-analytics-in-healthcare.jpg", 
+    aiHint: "healthcare data dashboard", // Updated AI hint
+    clientLogoUrl: "https://placehold.co/100x50.png?text=ClientB", 
     clientAiHint: "healthcare provider logo",
     description: "Developed a secure dashboard for visualizing patient data, enabling better clinical decisions.",
     techStack: ["Python (Flask)", "React", "D3.js", "HIPAA Compliance"],
@@ -59,8 +59,8 @@ const projectsData: Project[] = [
     industry: "Logistics",
     projectType: "Mobile App",
     thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", 
-    aiHint: "Tesla logo", 
-    clientLogoUrl: "https://placehold.co/100x50.png",
+    aiHint: "logistics mobile app interface", // Updated AI hint
+    clientLogoUrl: "https://placehold.co/100x50.png?text=ClientC",
     clientAiHint: "logistics company logo",
     description: "Cross-platform mobile app for real-time tracking and fleet management, reducing operational costs.",
     techStack: ["React Native", "Node.js", "Firebase", "Google Maps API"],
@@ -72,8 +72,8 @@ const projectsData: Project[] = [
     industry: "Entertainment",
     projectType: "Data Platform",
     thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png",
-    aiHint: "Tesla logo", 
-    clientLogoUrl: "https://placehold.co/100x50.png",
+    aiHint: "ai recommendation system", // Updated AI hint
+    clientLogoUrl: "https://placehold.co/100x50.png?text=ClientD",
     clientAiHint: "streaming service logo",
     description: "Built an AI recommendation engine that increased user retention by 25% for a streaming service.",
     techStack: ["Python", "TensorFlow", "Kubernetes", "GCP"],
@@ -85,12 +85,40 @@ const projectsData: Project[] = [
     title: "Smart City IoT Solution",
     industry: "Public Sector",
     projectType: "Other", 
-    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png",
-    aiHint: "Tesla logo", 
-    clientLogoUrl: "https://placehold.co/100x50.png",
+    thumbnailUrl: "https://www.keysight.com/content/dam/keysight/en/img/soln/internet-of-things-iot/smart-city/solutions_iot-smart-city_slice4.jpg?wid=388&hei=291",
+    aiHint: "smart city technology", // Updated AI hint
+    clientLogoUrl: "https://placehold.co/100x50.png?text=ClientE",
     clientAiHint: "government entity logo",
     description: "Developed an IoT platform for managing city infrastructure, improving resource allocation.",
     techStack: ["MQTT", "Node.js", "React", "Azure IoT"],
+    caseStudyLink: "#",
+  },
+  {
+    id: "project-6",
+    title: "Fintech Mobile Banking App",
+    industry: "Finance",
+    projectType: "Mobile App",
+    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png",
+    aiHint: "fintech app interface",
+    clientLogoUrl: "https://placehold.co/100x50.png?text=ClientF",
+    clientAiHint: "finance company logo",
+    description: "A secure and user-friendly mobile banking application with modern features.",
+    techStack: ["Swift", "Kotlin", "Node.js", "PostgreSQL"],
+    keyMetrics: ["High Security Rating"],
+    caseStudyLink: "#",
+  },
+  {
+    id: "project-7",
+    title: "Cloud Migration for SaaS Company",
+    industry: "Technology",
+    projectType: "Other",
+    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png",
+    aiHint: "cloud infrastructure diagram",
+    clientLogoUrl: "https://placehold.co/100x50.png?text=ClientG",
+    clientAiHint: "saas company logo",
+    description: "Successfully migrated a large SaaS platform to a scalable cloud infrastructure, reducing costs by 20%.",
+    techStack: ["AWS", "Terraform", "Docker", "Kubernetes"],
+    keyMetrics: ["-20% Operational Costs", "Improved Scalability"],
     caseStudyLink: "#",
   },
 ];
@@ -156,7 +184,7 @@ export default function PortfolioSection() {
                     alt={project.title}
                     width={project.projectType === "Mobile App" ? 400 : 600} 
                     height={project.projectType === "Mobile App" ? 600 : 400} 
-                    className="object-contain w-full h-full transition-transform duration-500 group-hover:scale-110 p-4" // Added p-4 for some padding around the logo
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" // Use object-cover
                     data-ai-hint={project.aiHint}
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
