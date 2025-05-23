@@ -30,9 +30,9 @@ const projectsData: Project[] = [
     title: "E-commerce Platform Modernization",
     industry: "Retail",
     projectType: "Web App",
-    thumbnailUrl: "https://placehold.co/600x400.png",
-    aiHint: "ecommerce trends",
-    clientLogoUrl: "https://placehold.co/100x50.png", // Changed from toppng.com
+    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png",
+    aiHint: "Tesla logo",
+    clientLogoUrl: "https://placehold.co/100x50.png", 
     clientAiHint: "retail company logo",
     description: "Revamped a legacy e-commerce system, improving performance by 60% and user engagement by 40%.",
     techStack: ["Next.js", "TypeScript", "AWS", "Stripe"],
@@ -44,8 +44,8 @@ const projectsData: Project[] = [
     title: "Healthcare Data Analytics Dashboard",
     industry: "Healthcare",
     projectType: "Data Platform",
-    thumbnailUrl: "https://placehold.co/600x400.png", 
-    aiHint: "healthcare dashboard charts", 
+    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", 
+    aiHint: "Tesla logo", 
     clientLogoUrl: "https://placehold.co/100x50.png", 
     clientAiHint: "healthcare provider logo",
     description: "Developed a secure dashboard for visualizing patient data, enabling better clinical decisions.",
@@ -58,8 +58,8 @@ const projectsData: Project[] = [
     title: "Mobile App for Logistics Management",
     industry: "Logistics",
     projectType: "Mobile App",
-    thumbnailUrl: "https://placehold.co/400x600.png", 
-    aiHint: "logistics app interface", 
+    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png", 
+    aiHint: "Tesla logo", 
     clientLogoUrl: "https://placehold.co/100x50.png",
     clientAiHint: "logistics company logo",
     description: "Cross-platform mobile app for real-time tracking and fleet management, reducing operational costs.",
@@ -71,8 +71,8 @@ const projectsData: Project[] = [
     title: "AI Powered Recommendation Engine",
     industry: "Entertainment",
     projectType: "Data Platform",
-    thumbnailUrl: "https://placehold.co/600x400.png",
-    aiHint: "ai recommendation algorithm", 
+    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png",
+    aiHint: "Tesla logo", 
     clientLogoUrl: "https://placehold.co/100x50.png",
     clientAiHint: "streaming service logo",
     description: "Built an AI recommendation engine that increased user retention by 25% for a streaming service.",
@@ -85,8 +85,8 @@ const projectsData: Project[] = [
     title: "Smart City IoT Solution",
     industry: "Public Sector",
     projectType: "Other", 
-    thumbnailUrl: "https://placehold.co/600x400.png",
-    aiHint: "smart city iot", 
+    thumbnailUrl: "https://toppng.com/uploads/preview/tesla-logo-no-background-11661594501t2dlc9ghn5.png",
+    aiHint: "Tesla logo", 
     clientLogoUrl: "https://placehold.co/100x50.png",
     clientAiHint: "government entity logo",
     description: "Developed an IoT platform for managing city infrastructure, improving resource allocation.",
@@ -156,7 +156,7 @@ export default function PortfolioSection() {
                     alt={project.title}
                     width={project.projectType === "Mobile App" ? 400 : 600} 
                     height={project.projectType === "Mobile App" ? 600 : 400} 
-                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                    className="object-contain w-full h-full transition-transform duration-500 group-hover:scale-110 p-4" // Added p-4 for some padding around the logo
                     data-ai-hint={project.aiHint}
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="

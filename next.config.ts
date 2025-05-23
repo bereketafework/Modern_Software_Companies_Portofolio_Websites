@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'toppng.com', // Added toppng.com
+        port: '',
+        pathname: '/**',
+      }
     ],
   },
 };
