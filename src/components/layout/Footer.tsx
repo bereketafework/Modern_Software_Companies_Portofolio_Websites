@@ -16,10 +16,10 @@ const socialLinks = [
     ariaLabel: "Bereket Afework on LinkedIn",
   },
   {
-    href: "https://t.me/BEsmile",
-    icon: Send, // Using Send icon for Telegram
+    href: "https://t.me/Bksmile", // Changed username
+    icon: Send, 
     label: "Telegram",
-    ariaLabel: "Bereket Afework on Telegram",
+    ariaLabel: "Connect on Telegram", // Updated aria-label
   },
 ];
 
