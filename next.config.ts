@@ -100,9 +100,16 @@ const nextConfig: NextConfig = {
         hostname: 'ih1.redbubble.net',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.citypng.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
 };
 
 export default nextConfig;
+

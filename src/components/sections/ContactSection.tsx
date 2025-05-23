@@ -160,7 +160,7 @@ export default function ContactSection() {
             
             <Card className="shadow-lg bg-card group hover:bg-muted/20 transition-colors duration-200 p-6">
               <Link 
-                href="https://maps.app.goo.gl/iycW7Y2yKFWkD8HK6" 
+                href="https://maps.app.goo.gl/76aZzzWTotYGKVEq7" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="View location on Google Maps"
@@ -187,7 +187,7 @@ export default function ContactSection() {
               </div>
               <p className="mt-3 text-sm text-center text-muted-foreground">
                 <Link 
-                  href="https://maps.app.goo.gl/iycW7Y2yKFWkD8HK6" 
+                  href="https://maps.app.goo.gl/76aZzzWTotYGKVEq7" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:underline hover:text-primary"

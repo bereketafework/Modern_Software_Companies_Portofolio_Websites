@@ -55,9 +55,11 @@ const clientLogos = [
   { name: "Google", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png", aiHint: "Google logo" },
   { name: "Microsoft", logoUrl: "https://threatconnect.com/wp-content/uploads/2019/05/Microsoft-Logo.png", aiHint: "Microsoft logo" },
   { name: "GitHub", logoUrl: "https://nextgen.group/hubfs/github_PNG65.png", aiHint: "GitHub logo" },
-  { name: "Apple", logoUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8e/fb/c1/8efbc1ca-8c84-1eea-d8c9-c2fa4d0a9612/AppIcon-0-1x_U007emarketing-0-8-0-85-220-0.png/1200x600wa.png", aiHint: "Apple logo" },
-  { name: "Redbubble Design", logoUrl: "https://ih1.redbubble.net/image.4738350686.1489/flat,750x,075,f-pad,750x1000,f8f8f8.jpg", aiHint: "Creative design logo" },
+  { name: "Apple", logoUrl: "https://www.citypng.com/public/uploads/preview/silver-metal-apple-logo-icon-png-701751694967874lyn8agzibp.png", aiHint: "Apple logo silver" },
+  { name: "LinkedIn", logoUrl: "https://www.citypng.com/public/uploads/preview/hd-linkedin-official-logo-transparent-background-701751694779193uxxevujc5p.png", aiHint: "LinkedIn logo" },
+  { name: "Creative Design Co.", logoUrl: "https://ih1.redbubble.net/image.4738350686.1489/flat,750x,075,f-pad,750x1000,f8f8f8.jpg", aiHint: "Creative design logo" },
 ];
+
 
 const successMetrics = [
   { value: 500, label: "Happy Clients", icon: Users, suffix: "+" },
@@ -200,8 +202,8 @@ export default function TestimonialsSection() {
               <Image
                 src={client.logoUrl}
                 alt={client.name}
-                width={130} // Increased from 120
-                height={55}  // Increased from 50, adjust as needed for aspect ratio
+                width={130} 
+                height={55}  
                 className="object-contain h-12 filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out opacity-60 group-hover:opacity-100 group-hover:scale-105 rounded-md"
                 data-ai-hint={client.aiHint}
                 loading="lazy"
@@ -213,3 +215,4 @@ export default function TestimonialsSection() {
     </section>
   );
 }
+
