@@ -1,25 +1,19 @@
 
 import Link from "next/link";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin } from "lucide-react"; // Removed Twitter
 
 const socialLinks = [
   {
-    href: "https://github.com",
+    href: "https://github.com/BereketAfework", // Placeholder, replace with actual link
     icon: Github,
     label: "GitHub",
-    ariaLabel: "Smart Tech Solution on GitHub",
+    ariaLabel: "Bereket Afework on GitHub",
   },
   {
-    href: "https://linkedin.com",
+    href: "https://linkedin.com/in/bereket-afework", // Placeholder, replace with actual link
     icon: Linkedin,
     label: "LinkedIn",
-    ariaLabel: "Smart Tech Solution on LinkedIn",
-  },
-  {
-    href: "https://twitter.com",
-    icon: Twitter,
-    label: "Twitter",
-    ariaLabel: "Smart Tech Solution on Twitter",
+    ariaLabel: "Bereket Afework on LinkedIn",
   },
 ];
 
@@ -45,6 +39,9 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Smart Tech Solution. All rights reserved.
         </p>
         <p className="text-xs text-muted-foreground/70 mt-2">
+          Developed by Bereket Afework
+        </p>
+        <p className="text-xs text-muted-foreground/70 mt-1">
           Crafting Digital Excellence
         </p>
       </div>

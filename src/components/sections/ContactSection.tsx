@@ -8,11 +8,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
-import { Send, MapPin, Phone, Mail, MessageSquare } from "lucide-react";
+import { Send, MapPin, Phone, Mail } from "lucide-react"; // Removed MessageSquare
 import Link from "next/link";
-import { Card as ShadCard } from "@/components/ui/card"; // Renamed to avoid conflict if Card was defined below
+import { Card as ShadCard } from "@/components/ui/card"; 
 
-// Re-exporting with simpler names for this file, or ensure imports are correct
 const Card = ShadCard;
 
 type FormInputs = {
@@ -25,7 +24,7 @@ export default function ContactSection() {
   const { toast } = useToast();
   const {
     register,
-    handleSubmit: handleFormSubmit, // Renamed to avoid conflict with outer handleSubmit if any
+    handleSubmit: handleFormSubmit, 
     formState: { errors },
     reset,
   } = useForm<FormInputs>();
@@ -35,7 +34,6 @@ export default function ContactSection() {
 
     const mailtoLink = `mailto:bereketbeki64@gmail.com?subject=Contact from ${encodeURIComponent(data.name)} - Smart Tech Solution Inquiry&body=${encodeURIComponent(data.message)}%0A%0AReply to: ${data.email}`;
     
-    // Attempt to open mail client
     window.location.href = mailtoLink;
 
     toast({
@@ -128,7 +126,7 @@ export default function ContactSection() {
                   <MapPin className="h-6 w-6 text-primary mr-3 mt-1 shrink-0" />
                   <div>
                     <h4 className="font-medium text-card-foreground">Our Office</h4>
-                    <p>Tikur Anbessa Hospital Area, Addis Ababa, Ethiopia</p> {/* Updated Address */}
+                    <p>Tikur Anbessa Hospital Area, Addis Ababa, Ethiopia</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -146,7 +144,7 @@ export default function ContactSection() {
                     <h4 className="font-medium text-card-foreground">Call Us</h4>
                     <Link href="tel:+251912345678" className="hover:text-primary transition-colors">
                       +251 912 345 678
-                    </Link> {/* Example Ethiopian number */}
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -156,27 +154,21 @@ export default function ContactSection() {
                <h3 className="text-xl font-semibold text-card-foreground p-6 pb-0">Our Location</h3>
               <div className="aspect-w-16 aspect-h-9 bg-muted">
                   <Image
-                    src="https://placehold.co/600x400.png?text=Tikur+Anbessa+Hospital+Area"
+                    src="https://placehold.co/600x400.png?text=Map+of+Tikur+Anbessa+Hospital+Area"
                     alt="Office Location Map - Tikur Anbessa Hospital Area, Addis Ababa"
                     width={600}
                     height={400}
                     className="object-cover w-full h-full"
                     data-ai-hint="Addis Ababa map hospital"
+                    priority={false} 
+                    loading="lazy"
                   />
               </div>
             </Card>
           </div>
         </div>
       </div>
-      <Button
-        variant="default"
-        size="icon"
-        className="fixed bottom-8 left-8 z-50 rounded-full shadow-lg p-3 h-14 w-14 bg-cta-accent text-cta-accent-foreground hover:bg-cta-accent/90 hover:scale-110 transition-all"
-        aria-label="Open chat"
-        onClick={() => alert("Chat feature coming soon!")}
-      >
-        <MessageSquare className="h-6 w-6" />
-      </Button>
+      {/* The floating chat button is now handled by Chatbot.tsx in RootLayout */}
     </section>
   );
 }

@@ -7,13 +7,13 @@ import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ExternalLink, List, Globe, DatabaseZap, Smartphone, Filter } from "lucide-react"; // Replaced Database with DatabaseZap for more visual interest
+import { ExternalLink, List, Globe, DatabaseZap, Smartphone, Filter } from "lucide-react"; 
 
 interface Project {
   id: string;
   title: string;
   industry: string;
-  projectType: "Web App" | "Data Platform" | "Mobile App" | "Other"; // More specific types
+  projectType: "Web App" | "Data Platform" | "Mobile App" | "Other";
   thumbnailUrl: string;
   aiHint: string;
   clientLogoUrl: string;
@@ -30,10 +30,10 @@ const projectsData: Project[] = [
     title: "E-commerce Platform Modernization",
     industry: "Retail",
     projectType: "Web App",
-    thumbnailUrl: "https://placehold.co/600x400.png?text=Modern+E-commerce+UI",
+    thumbnailUrl: "https://placehold.co/600x400.png?text=Modern+E-commerce+Platform+UI",
     aiHint: "online store interface",
     clientLogoUrl: "https://placehold.co/100x50.png?text=ClientA",
-    clientAiHint: "company logo",
+    clientAiHint: "retail company logo",
     description: "Revamped a legacy e-commerce system, improving performance by 60% and user engagement by 40%.",
     techStack: ["Next.js", "TypeScript", "AWS", "Stripe"],
     keyMetrics: ["+60% Performance", "+40% Engagement"],
@@ -44,10 +44,10 @@ const projectsData: Project[] = [
     title: "Healthcare Data Analytics Dashboard",
     industry: "Healthcare",
     projectType: "Data Platform",
-    thumbnailUrl: "https://placehold.co/600x338.png?text=Healthcare+Dashboard+Charts",
+    thumbnailUrl: "https://placehold.co/600x400.png?text=Healthcare+Analytics+Dashboard+Charts",
     aiHint: "medical data charts",
     clientLogoUrl: "https://placehold.co/100x50.png?text=ClientB",
-    clientAiHint: "company logo",
+    clientAiHint: "healthcare provider logo",
     description: "Developed a secure dashboard for visualizing patient data, enabling better clinical decisions.",
     techStack: ["Python (Flask)", "React", "D3.js", "HIPAA Compliance"],
     keyMetrics: ["Faster Insights", "Improved Compliance"],
@@ -58,10 +58,10 @@ const projectsData: Project[] = [
     title: "Mobile App for Logistics Management",
     industry: "Logistics",
     projectType: "Mobile App",
-    thumbnailUrl: "https://placehold.co/400x600.png?text=Logistics+Mobile+App+Interface",
+    thumbnailUrl: "https://placehold.co/400x600.png?text=Logistics+Mobile+App+UI",
     aiHint: "delivery tracking app",
     clientLogoUrl: "https://placehold.co/100x50.png?text=ClientC",
-    clientAiHint: "company logo",
+    clientAiHint: "logistics company logo",
     description: "Cross-platform mobile app for real-time tracking and fleet management, reducing operational costs.",
     techStack: ["React Native", "Node.js", "Firebase", "Google Maps API"],
     caseStudyLink: "#",
@@ -71,10 +71,10 @@ const projectsData: Project[] = [
     title: "AI Powered Recommendation Engine",
     industry: "Entertainment",
     projectType: "Data Platform",
-    thumbnailUrl: "https://placehold.co/600x400.png?text=AI+Recommendations",
+    thumbnailUrl: "https://placehold.co/600x400.png?text=AI+Content+Recommendations",
     aiHint: "artificial intelligence network",
     clientLogoUrl: "https://placehold.co/100x50.png?text=ClientD",
-    clientAiHint: "tech company logo",
+    clientAiHint: "streaming service logo",
     description: "Built an AI recommendation engine that increased user retention by 25% for a streaming service.",
     techStack: ["Python", "TensorFlow", "Kubernetes", "GCP"],
     keyMetrics: ["+25% User Retention"],
@@ -84,8 +84,8 @@ const projectsData: Project[] = [
     id: "project-5",
     title: "Smart City IoT Solution",
     industry: "Public Sector",
-    projectType: "Other", // Example of 'Other'
-    thumbnailUrl: "https://placehold.co/600x400.png?text=Smart+City+Network",
+    projectType: "Other", 
+    thumbnailUrl: "https://placehold.co/600x400.png?text=Smart+City+IoT+Network",
     aiHint: "iot network city",
     clientLogoUrl: "https://placehold.co/100x50.png?text=CityGov",
     clientAiHint: "government entity logo",
@@ -147,7 +147,7 @@ export default function PortfolioSection() {
             {filteredProjects.map((project, index) => (
               <Card
                 key={project.id}
-                className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out break-inside-avoid animate-fade-in hover:scale-[1.02]"
+                className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out break-inside-avoid animate-fade-in hover:scale-[1.02] group"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="aspect-w-16 aspect-h-9 bg-muted overflow-hidden">
@@ -160,6 +160,8 @@ export default function PortfolioSection() {
                     data-ai-hint={project.aiHint}
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+                    priority={index < 3} // Prioritize loading for the first few images
+                    loading={index < 3 ? "eager" : "lazy"}
                   />
                 </div>
                 <CardContent className="p-6">
@@ -172,6 +174,7 @@ export default function PortfolioSection() {
                       height={40}
                       className="object-contain h-8"
                       data-ai-hint={project.clientAiHint}
+                      loading="lazy"
                     />
                   </div>
                   <p className="text-sm text-foreground/70 mb-4">{project.description}</p>

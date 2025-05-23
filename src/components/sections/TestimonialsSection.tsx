@@ -52,12 +52,12 @@ const testimonials: Testimonial[] = [
 ];
 
 const clientLogos = [
-  { name: "Google", logoUrl: "https://placehold.co/150x60.png?text=Google", aiHint: "Google logo" },
-  { name: "Microsoft", logoUrl: "https://placehold.co/150x60.png?text=Microsoft", aiHint: "Microsoft logo" },
-  { name: "Tesla", logoUrl: "https://placehold.co/150x60.png?text=Tesla", aiHint: "Tesla logo" },
-  { name: "Meta", logoUrl: "https://placehold.co/150x60.png?text=Meta", aiHint: "Meta logo" },
-  { name: "Amazon", logoUrl: "https://placehold.co/150x60.png?text=Amazon", aiHint: "Amazon logo" },
-  { name: "Netflix", logoUrl: "https://placehold.co/150x60.png?text=Netflix", aiHint: "Netflix logo" },
+  { name: "Google", logoUrl: "https://placehold.co/150x60.png?text=Google", aiHint: "Google logo abstract" },
+  { name: "Microsoft", logoUrl: "https://placehold.co/150x60.png?text=Microsoft", aiHint: "Microsoft logo abstract" },
+  { name: "Tesla", logoUrl: "https://placehold.co/150x60.png?text=Tesla", aiHint: "Tesla logo abstract" },
+  { name: "Meta", logoUrl: "https://placehold.co/150x60.png?text=Meta", aiHint: "Meta logo abstract" },
+  { name: "Amazon", logoUrl: "https://placehold.co/150x60.png?text=Amazon", aiHint: "Amazon logo abstract" },
+  { name: "Netflix", logoUrl: "https://placehold.co/150x60.png?text=Netflix", aiHint: "Netflix logo abstract" },
 ];
 
 const successMetrics = [
@@ -82,13 +82,14 @@ const CountUpNumber = ({ endValue, duration = 1500, suffix = "" }: { endValue: n
       { threshold: 0.5 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current); // Use optional chaining for safety
+      if (currentRef) {
+        observer.unobserve(currentRef); 
       }
     };
   }, []);
@@ -123,7 +124,7 @@ export default function TestimonialsSection() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000); // Auto-play every 5 seconds
+    }, 5000); 
     return () => clearTimeout(timer);
   }, [currentTestimonial]);
 
@@ -148,7 +149,7 @@ export default function TestimonialsSection() {
               } bg-card text-card-foreground shadow-xl p-8 flex flex-col items-center text-center`}
             >
                 <Avatar className="h-20 w-20 mb-4 border-4 border-primary/20">
-                  <AvatarImage src={testimonial.avatarUrl} alt={testimonial.name} data-ai-hint={testimonial.aiHintAvatar || "person portrait"} />
+                  <AvatarImage src={testimonial.avatarUrl} alt={testimonial.name} data-ai-hint={testimonial.aiHintAvatar || "person portrait"} loading="lazy"/>
                   <AvatarFallback>{testimonial.name.split(" ").map(n => n[0]).join("")}</AvatarFallback>
                 </Avatar>
                 <p className="text-lg italic text-card-foreground/90 mb-4">"{testimonial.quote}"</p>
@@ -161,7 +162,7 @@ export default function TestimonialsSection() {
                 <p className="text-sm text-card-foreground/70">{testimonial.title}, {testimonial.company}</p>
             </Card>
           ))}
-          <div className="absolute bottom-[-2rem] left-1/2 -translate-x-1/2 flex space-x-2">
+          <div className="absolute bottom-[-2rem] left-1/2 -translate-x-1/2 flex space-x-2 z-20">
             {testimonials.map((_, index) => (
               <button
                 key={`dot-${index}`}
@@ -204,6 +205,7 @@ export default function TestimonialsSection() {
                 height={50}
                 className="object-contain h-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out opacity-60 group-hover:opacity-100 group-hover:scale-105"
                 data-ai-hint={client.aiHint}
+                loading="lazy"
               />
             </div>
           ))}

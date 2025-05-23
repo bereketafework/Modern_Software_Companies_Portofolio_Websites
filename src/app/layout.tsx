@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import ScrollToTopButton from "@/components/elements/ScrollToTopButton";
 import ScrollProgressBar from "@/components/elements/ScrollProgressBar";
+import Chatbot from "@/components/elements/Chatbot"; // Added Chatbot import
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,6 @@ export const metadata: Metadata = {
   title: "Smart Tech Solution Portfolio",
   description:
     "Modern Software Development Company Portfolio Website | Smart Tech Solution",
-  // TODO: Add more specific meta tags, open graph, twitter cards etc.
 };
 
 export default function RootLayout({
@@ -56,6 +56,7 @@ export default function RootLayout({
           <Footer />
           <Toaster />
           <ScrollToTopButton />
+          <Chatbot /> {/* Added Chatbot component */}
         </ThemeProvider>
       </body>
     </html>
