@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -47,12 +48,12 @@ export default {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
+  			chart: { // Added chart colors for consistency if needed, can be expanded
+  				'1': 'hsl(var(--primary))', // Example: Use primary color for chart 1
+  				'2': 'hsl(var(--secondary))', // Example: Use secondary color for chart 2
+  				'3': 'hsl(var(--accent))',
+  				'4': 'hsl(var(--cta-accent))',
+  				'5': 'hsl(var(--muted-foreground))' // A more neutral color
   			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
@@ -87,8 +88,8 @@ export default {
   					height: '0'
   				}
   			},
-        'count-up': {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
+        'count-up': { // Keep existing count-up if used by CountUpNumber directly
+          '0%': { opacity: '0', transform: 'translateY(10px)' }, // slightly less Y
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         'fade-in': {
@@ -96,19 +97,21 @@ export default {
           '100%': { opacity: '1' },
         },
         'slide-up': {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '0%': { opacity: '0', transform: 'translateY(15px)' }, // slightly less Y
           '100%': { opacity: '1', transform: 'translateY(0)' },
         }
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'count-up': 'count-up 0.5s ease-out forwards',
-        'fade-in': 'fade-in 0.5s ease-in-out forwards',
-        'slide-up': 'slide-up 0.5s ease-out forwards',
+        'count-up': 'count-up 0.7s ease-out forwards', // Adjust duration if needed
+        'fade-in': 'fade-in 0.6s ease-in-out forwards', // Adjust duration
+        'slide-up': 'slide-up 0.6s ease-out forwards', // Adjust duration
   		},
       aspectRatio: {
         '16/9': '16 / 9',
+        '4/3': '4 / 3',
+        '3/4': '3 / 4', // For mobile app screenshots
       },
   	}
   },

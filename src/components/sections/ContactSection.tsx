@@ -1,5 +1,7 @@
+
 "use client";
 
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,30 +10,41 @@ import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 import { Send, MapPin, Phone, Mail, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import { Card as ShadCard } from "@/components/ui/card"; // Renamed to avoid conflict if Card was defined below
+
+// Re-exporting with simpler names for this file, or ensure imports are correct
+const Card = ShadCard;
+
+type FormInputs = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 export default function ContactSection() {
   const { toast } = useToast();
+  const {
+    register,
+    handleSubmit: handleFormSubmit, // Renamed to avoid conflict with outer handleSubmit if any
+    formState: { errors },
+    reset,
+  } = useForm<FormInputs>();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // Basic form data extraction
-    const formData = new FormData(event.currentTarget);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
+  const onSubmit: SubmitHandler<FormInputs> = (data) => {
+    console.log("Form submitted:", data);
 
-    // In a real app, you'd send this data to a backend API
-    console.log("Form submitted:", { name, email, message });
+    const mailtoLink = `mailto:bereketbeki64@gmail.com?subject=Contact from ${encodeURIComponent(data.name)} - Smart Tech Solution Inquiry&body=${encodeURIComponent(data.message)}%0A%0AReply to: ${data.email}`;
+    
+    // Attempt to open mail client
+    window.location.href = mailtoLink;
 
-    // Show a success toast
     toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll be in touch soon.",
+      title: "Message Prepared!",
+      description: "Your email client should open with the message details. If not, please copy the details manually.",
       variant: "default",
     });
 
-    // Reset the form (optional)
-    event.currentTarget.reset();
+    reset();
   };
 
   return (
@@ -49,50 +62,59 @@ export default function ContactSection() {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <Card className="p-6 sm:p-8 shadow-lg bg-card animate-slide-up">
             <h3 className="text-2xl font-semibold text-card-foreground mb-6">Send us a message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleFormSubmit(onSubmit)} className="space-y-6">
               <div>
                 <Label htmlFor="name" className="text-sm font-medium">Full Name</Label>
                 <Input
                   id="name"
-                  name="name"
                   type="text"
                   placeholder="John Doe"
-                  required
                   className="mt-1 bg-background"
                   aria-label="Full Name"
+                  {...register("name", { required: "Full name is required." })}
+                  aria-invalid={errors.name ? "true" : "false"}
                 />
+                {errors.name && <p className="text-sm text-destructive mt-1">{errors.name.message}</p>}
               </div>
               <div>
                 <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
                 <Input
                   id="email"
-                  name="email"
                   type="email"
                   placeholder="you@example.com"
-                  required
                   className="mt-1 bg-background"
                   aria-label="Email Address"
+                  {...register("email", { 
+                    required: "Email is required.",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Invalid email address."
+                    } 
+                  })}
+                  aria-invalid={errors.email ? "true" : "false"}
                 />
+                {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
               </div>
               <div>
                 <Label htmlFor="message" className="text-sm font-medium">Your Message</Label>
                 <Textarea
                   id="message"
-                  name="message"
                   placeholder="Tell us about your project or inquiry..."
                   rows={5}
-                  required
                   className="mt-1 bg-background"
                   aria-label="Your Message"
+                  {...register("message", { required: "Message is required." })}
+                  aria-invalid={errors.message ? "true" : "false"}
                 />
+                {errors.message && <p className="text-sm text-destructive mt-1">{errors.message.message}</p>}
               </div>
               <div>
                 <Button
                   type="submit"
-                  className="w-full bg-cta-accent text-cta-accent-foreground hover:bg-cta-accent/90 transition-colors duration-300 text-base py-3"
+                  className="w-full bg-cta-accent text-cta-accent-foreground hover:bg-cta-accent/90 transition-colors duration-300 text-base py-3 group"
                   aria-label="Send message"
                 >
-                  Send Message <Send className="ml-2 h-4 w-4" />
+                  Send Message <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
             </form>
@@ -106,15 +128,15 @@ export default function ContactSection() {
                   <MapPin className="h-6 w-6 text-primary mr-3 mt-1 shrink-0" />
                   <div>
                     <h4 className="font-medium text-card-foreground">Our Office</h4>
-                    <p>123 Tech Avenue, Silicon Valley, CA 94000</p>
+                    <p>Tikur Anbessa Hospital Area, Addis Ababa, Ethiopia</p> {/* Updated Address */}
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Mail className="h-6 w-6 text-primary mr-3 mt-1 shrink-0" />
                   <div>
                     <h4 className="font-medium text-card-foreground">Email Us</h4>
-                    <Link href="mailto:info@apexsolutions.dev" className="hover:text-primary transition-colors">
-                      info@apexsolutions.dev
+                    <Link href="mailto:info@smarttechsolution.dev" className="hover:text-primary transition-colors">
+                      info@smarttechsolution.dev
                     </Link>
                   </div>
                 </div>
@@ -122,9 +144,9 @@ export default function ContactSection() {
                   <Phone className="h-6 w-6 text-primary mr-3 mt-1 shrink-0" />
                   <div>
                     <h4 className="font-medium text-card-foreground">Call Us</h4>
-                    <Link href="tel:+1234567890" className="hover:text-primary transition-colors">
-                      +1 (234) 567-890
-                    </Link>
+                    <Link href="tel:+251912345678" className="hover:text-primary transition-colors">
+                      +251 912 345 678
+                    </Link> {/* Example Ethiopian number */}
                   </div>
                 </div>
               </div>
@@ -132,41 +154,29 @@ export default function ContactSection() {
             
             <Card className="shadow-lg bg-card overflow-hidden">
                <h3 className="text-xl font-semibold text-card-foreground p-6 pb-0">Our Location</h3>
-               {/* Interactive Office Location Map Placeholder */}
               <div className="aspect-w-16 aspect-h-9 bg-muted">
                   <Image
-                    src="https://placehold.co/600x400.png?text=Office+Location+Map"
-                    alt="Office Location Map"
+                    src="https://placehold.co/600x400.png?text=Tikur+Anbessa+Hospital+Area"
+                    alt="Office Location Map - Tikur Anbessa Hospital Area, Addis Ababa"
                     width={600}
                     height={400}
                     className="object-cover w-full h-full"
-                    data-ai-hint="office map"
+                    data-ai-hint="Addis Ababa map hospital"
                   />
               </div>
             </Card>
           </div>
         </div>
       </div>
-      {/* Floating Chat Widget Placeholder */}
       <Button
         variant="default"
         size="icon"
-        className="fixed bottom-8 left-8 z-50 rounded-full shadow-lg p-3 h-14 w-14 bg-cta-accent text-cta-accent-foreground hover:bg-cta-accent/90"
+        className="fixed bottom-8 left-8 z-50 rounded-full shadow-lg p-3 h-14 w-14 bg-cta-accent text-cta-accent-foreground hover:bg-cta-accent/90 hover:scale-110 transition-all"
         aria-label="Open chat"
+        onClick={() => alert("Chat feature coming soon!")}
       >
         <MessageSquare className="h-6 w-6" />
       </Button>
     </section>
   );
 }
-
-// Need to define Card component if not already globally available from ShadCN
-// Assuming Card, CardHeader, CardTitle, CardContent are from "@/components/ui/card"
-import { Card as ShadCard, CardContent as ShadCardContent, CardHeader as ShadCardHeader, CardTitle as ShadCardTitle } from "@/components/ui/card";
-
-// Re-exporting with simpler names for this file, or ensure imports are correct
-const Card = ShadCard;
-// const CardContent = ShadCardContent; // Not needed if CardContent is used from import
-// const CardHeader = ShadCardHeader; // Not needed if CardHeader is used from import
-// const CardTitle = ShadCardTitle; // Not needed if CardTitle is used from import
-

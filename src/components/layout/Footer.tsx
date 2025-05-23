@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
@@ -6,19 +7,19 @@ const socialLinks = [
     href: "https://github.com",
     icon: Github,
     label: "GitHub",
-    ariaLabel: "Apex Solutions on GitHub",
+    ariaLabel: "Smart Tech Solution on GitHub",
   },
   {
     href: "https://linkedin.com",
     icon: Linkedin,
     label: "LinkedIn",
-    ariaLabel: "Apex Solutions on LinkedIn",
+    ariaLabel: "Smart Tech Solution on LinkedIn",
   },
   {
     href: "https://twitter.com",
     icon: Twitter,
     label: "Twitter",
-    ariaLabel: "Apex Solutions on Twitter",
+    ariaLabel: "Smart Tech Solution on Twitter",
   },
 ];
 
@@ -41,7 +42,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Apex Solutions. All rights reserved.
+          &copy; {new Date().getFullYear()} Smart Tech Solution. All rights reserved.
         </p>
         <p className="text-xs text-muted-foreground/70 mt-2">
           Crafting Digital Excellence

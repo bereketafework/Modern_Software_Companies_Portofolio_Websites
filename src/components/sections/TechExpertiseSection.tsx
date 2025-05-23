@@ -1,7 +1,24 @@
-import SkillBar from "@/components/elements/SkillBar";
-import { Code, Database, Cloud, TerminalSquare } from "lucide-react";
 
-const techCategories = [
+"use client";
+import type { SVGProps } from "react";
+import { Code, Database, Cloud, TerminalSquare } from "lucide-react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Text } from 'recharts';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTheme } from "next-themes";
+
+interface Skill {
+  name: string;
+  level: number; // 0-100
+  details: string;
+}
+
+interface TechCategory {
+  name: string;
+  icon: React.ElementType;
+  skills: Skill[];
+}
+
+const techCategories: TechCategory[] = [
   {
     name: "Frontend Development",
     icon: Code,
@@ -26,9 +43,9 @@ const techCategories = [
     name: "Cloud Platforms",
     icon: Cloud,
     skills: [
-      { name: "Amazon Web Services (AWS)", level: 90, details: "Designing, deploying, and managing scalable applications on AWS (EC2, S3, Lambda, RDS, etc.)." },
-      { name: "Google Cloud Platform (GCP)", level: 85, details: "Leveraging GCP services for data analytics, machine learning, and application hosting." },
-      { name: "Microsoft Azure", level: 80, details: "Building and managing cloud solutions on Azure, including VMs, App Service, and Azure Functions." },
+      { name: "AWS", level: 90, details: "Designing, deploying, and managing scalable applications on AWS (EC2, S3, Lambda, RDS, etc.)." },
+      { name: "GCP", level: 85, details: "Leveraging GCP services for data analytics, machine learning, and application hosting." },
+      { name: "Azure", level: 80, details: "Building and managing cloud solutions on Azure, including VMs, App Service, and Azure Functions." },
     ],
   },
   {
@@ -37,48 +54,106 @@ const techCategories = [
     skills: [
       { name: "Docker", level: 95, details: "Containerizing applications for consistent development and deployment environments." },
       { name: "Kubernetes", level: 85, details: "Orchestrating containerized applications at scale with Kubernetes." },
-      { name: "CI/CD (Jenkins, GitHub Actions)", level: 90, details: "Implementing automated build, test, and deployment pipelines." },
+      { name: "CI/CD", level: 90, details: "Implementing automated build, test, and deployment pipelines (Jenkins, GitHub Actions)." },
       { name: "Terraform", level: 80, details: "Managing infrastructure as code for reproducible and version-controlled environments." },
     ],
   },
 ];
 
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: any[];
+  label?: string;
+}
+
+const CustomTooltipContent = ({ active, payload, label }: CustomTooltipProps) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload; // skill object
+    return (
+      <div className="bg-background/80 backdrop-blur-sm p-3 rounded-md shadow-lg border border-border text-foreground text-sm">
+        <p className="font-bold mb-1">{`${label} (${data.level}%)`}</p>
+        <p className="text-xs text-foreground/80">{data.details}</p>
+      </div>
+    );
+  }
+  return null;
+};
+
+// Custom tick for XAxis to handle long labels
+const CustomizedAxisTick = (props: any) => {
+  const { x, y, payload, width } = props;
+  const maxTextWidth = width / techCategories[0].skills.length - 10; // Approximate max width for text
+  
+  return (
+    <Text x={x} y={y} width={maxTextWidth} textAnchor="middle" verticalAnchor="start" className="text-xs fill-muted-foreground">
+      {payload.value}
+    </Text>
+  );
+};
+
+
 export default function TechExpertiseSection() {
+  const { theme } = useTheme();
+  const tickColor = theme === 'dark' ? "#A1A1AA" : "#71717A"; // Zinc 400 / Zinc 500 from Tailwind
+  const gridColor = theme === 'dark' ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)";
+  const primaryColor = "hsl(var(--primary))";
+
+
   return (
     <section id="about" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Technology Stack
+            Technology Stack & Expertise
           </h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
             We harness the power of modern technologies to build exceptional software.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {techCategories.map((category, catIndex) => (
-            <div key={category.name} className="animate-fade-in" style={{ animationDelay: `${catIndex * 200}ms` }}>
-              <div className="flex items-center mb-6">
-                <category.icon className="h-8 w-8 text-primary mr-3" />
-                <h3 className="text-2xl font-semibold text-foreground">{category.name}</h3>
-              </div>
-              <div>
-                {category.skills.map((skill, skillIndex) => (
-                  <SkillBar
-                    key={skill.name}
-                    skill={skill.name}
-                    level={skill.level}
-                    experienceDetails={skill.details}
-                    animationDelay={`${skillIndex * 100}ms`}
-                  />
-                ))}
-              </div>
-            </div>
+            <Card key={category.name} className="animate-fade-in shadow-lg bg-card" style={{ animationDelay: `${catIndex * 150}ms` }}>
+              <CardHeader>
+                <div className="flex items-center mb-2">
+                  <category.icon className="h-8 w-8 text-primary mr-3" />
+                  <CardTitle className="text-2xl text-card-foreground">{category.name}</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ResponsiveContainer width="100%" height={250}>
+                  <BarChart data={category.skills} margin={{ top: 5, right: 0, left: -25, bottom: 20 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
+                    <XAxis 
+                      dataKey="name" 
+                      tickLine={false} 
+                      axisLine={false} 
+                      tick={<CustomizedAxisTick />}
+                      interval={0}
+                      dy={10}
+                      className="text-xs"
+                      stroke={tickColor}
+                    />
+                    <YAxis 
+                      tickLine={false} 
+                      axisLine={false} 
+                      domain={[0, 100]} 
+                      tickFormatter={(value) => `${value}%`} 
+                      className="text-xs"
+                      stroke={tickColor}
+                    />
+                    <Tooltip 
+                      cursor={{ fill: 'hsl(var(--muted))', fillOpacity: 0.5 }} 
+                      content={<CustomTooltipContent />} 
+                    />
+                    <Bar dataKey="level" fill={primaryColor} radius={[4, 4, 0, 0]} barSize={30} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
           ))}
         </div>
         
-        {/* Placeholder for Development Process Timeline */}
         <div className="mt-20 text-center">
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Our Development Process</h3>
             <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-8">

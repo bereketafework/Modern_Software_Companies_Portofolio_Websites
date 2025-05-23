@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import TypewriterEffect from "@/components/effects/TypewriterEffect";
 import { SoftwareDevelopmentProcessIcon } from "@/components/elements/LottiePlaceholder";
@@ -31,7 +32,7 @@ export default function HeroSection() {
               Solutions
             </h1>
             <p className="text-lg sm:text-xl text-foreground/80 mb-10 max-w-xl mx-auto md:mx-0">
-              Apex Solutions empowers businesses with cutting-edge software,
+              Smart Tech Solution empowers businesses with cutting-edge software,
               transforming ideas into impactful digital realities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -59,7 +60,7 @@ export default function HeroSection() {
           {keyMetrics.map((metric, index) => (
             <div
               key={metric.label}
-              className="bg-background/50 dark:bg-foreground/5 p-6 rounded-xl shadow-lg animate-slide-up"
+              className="bg-background/50 dark:bg-foreground/5 p-6 rounded-xl shadow-lg animate-slide-up hover:shadow-2xl hover:scale-105 transition-all duration-300"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <metric.icon className="h-10 w-10 text-primary mx-auto mb-3" />

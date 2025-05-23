@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -13,46 +14,50 @@ interface Testimonial {
   title: string;
   company: string;
   avatarUrl?: string;
+  aiHintAvatar?: string;
   rating: number;
 }
 
 const testimonials: Testimonial[] = [
   {
     id: "testimonial-1",
-    quote: "Apex Solutions delivered an outstanding product that exceeded our expectations. Their team is professional, skilled, and truly understood our vision.",
+    quote: "Smart Tech Solution delivered an outstanding product that exceeded our expectations. Their team is professional, skilled, and truly understood our vision.",
     name: "Jane Doe",
     title: "CEO",
     company: "Innovatech Ltd.",
     avatarUrl: "https://placehold.co/100x100.png?text=JD",
+    aiHintAvatar: "female executive portrait",
     rating: 5,
   },
   {
     id: "testimonial-2",
-    quote: "Working with Apex Solutions was a game-changer for us. Their expertise in cloud solutions helped us scale our operations seamlessly.",
+    quote: "Working with Smart Tech Solution was a game-changer for us. Their expertise in cloud solutions helped us scale our operations seamlessly.",
     name: "John Smith",
     title: "CTO",
     company: "TechCorp Inc.",
     avatarUrl: "https://placehold.co/100x100.png?text=JS",
+    aiHintAvatar: "male tech executive",
     rating: 5,
   },
   {
     id: "testimonial-3",
-    quote: "The mobile app they developed for us has received fantastic user feedback. Highly recommend Apex for their quality and dedication.",
+    quote: "The mobile app they developed for us has received fantastic user feedback. Highly recommend Smart Tech Solution for their quality and dedication.",
     name: "Alice Brown",
     title: "Product Manager",
     company: "MobileFirst Co.",
     avatarUrl: "https://placehold.co/100x100.png?text=AB",
+    aiHintAvatar: "female product manager",
     rating: 4,
   },
 ];
 
 const clientLogos = [
-  { name: "ClientAlpha", logoUrl: "https://placehold.co/150x60.png?text=ClientAlpha", aiHint: "company logo" },
-  { name: "ClientBeta", logoUrl: "https://placehold.co/150x60.png?text=ClientBeta", aiHint: "company logo" },
-  { name: "ClientGamma", logoUrl: "https://placehold.co/150x60.png?text=ClientGamma", aiHint: "company logo" },
-  { name: "ClientDelta", logoUrl: "https://placehold.co/150x60.png?text=ClientDelta", aiHint: "company logo" },
-  { name: "ClientEpsilon", logoUrl: "https://placehold.co/150x60.png?text=ClientEpsilon", aiHint: "company logo" },
-  { name: "ClientZeta", logoUrl: "https://placehold.co/150x60.png?text=ClientZeta", aiHint: "company logo" },
+  { name: "Google", logoUrl: "https://placehold.co/150x60.png?text=Google", aiHint: "Google logo" },
+  { name: "Microsoft", logoUrl: "https://placehold.co/150x60.png?text=Microsoft", aiHint: "Microsoft logo" },
+  { name: "Tesla", logoUrl: "https://placehold.co/150x60.png?text=Tesla", aiHint: "Tesla logo" },
+  { name: "Meta", logoUrl: "https://placehold.co/150x60.png?text=Meta", aiHint: "Meta logo" },
+  { name: "Amazon", logoUrl: "https://placehold.co/150x60.png?text=Amazon", aiHint: "Amazon logo" },
+  { name: "Netflix", logoUrl: "https://placehold.co/150x60.png?text=Netflix", aiHint: "Netflix logo" },
 ];
 
 const successMetrics = [
@@ -64,20 +69,13 @@ const successMetrics = [
 const CountUpNumber = ({ endValue, duration = 1500, suffix = "" }: { endValue: number, duration?: number, suffix?: string }) => {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          let start = 0;
-          const incrementTime = (duration / endValue);
-          const timer = setInterval(() => {
-            start += 1;
-            setCount(start);
-            if (start === endValue) {
-              clearInterval(timer);
-            }
-          }, incrementTime);
+          setIsInView(true);
           observer.unobserve(entry.target);
         }
       },
@@ -90,10 +88,30 @@ const CountUpNumber = ({ endValue, duration = 1500, suffix = "" }: { endValue: n
 
     return () => {
       if (ref.current) {
-        observer.unobserve(ref.current);
+        observer.unobserve(ref.current); // Use optional chaining for safety
       }
     };
-  }, [endValue, duration]);
+  }, []);
+
+  useEffect(() => {
+    if (isInView) {
+      let start = 0;
+      const stepTime = Math.max(10, Math.floor(duration / endValue));
+      const increment = Math.max(1, Math.ceil(endValue / (duration / stepTime)));
+      
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= endValue) {
+          setCount(endValue);
+          clearInterval(timer);
+        } else {
+          setCount(start);
+        }
+      }, stepTime);
+      return () => clearInterval(timer);
+    }
+  }, [isInView, endValue, duration]);
+
 
   return <span ref={ref} className="animate-count-up">{count}{suffix}</span>;
 };
@@ -121,8 +139,7 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Testimonial Carousel (Simplified) */}
-        <div className="relative max-w-3xl mx-auto mb-16 h-80 md:h-72"> {/* Fixed height for smoother transitions */}
+        <div className="relative max-w-3xl mx-auto mb-16 h-80 md:h-72">
           {testimonials.map((testimonial, index) => (
             <Card
               key={testimonial.id}
@@ -131,7 +148,7 @@ export default function TestimonialsSection() {
               } bg-card text-card-foreground shadow-xl p-8 flex flex-col items-center text-center`}
             >
                 <Avatar className="h-20 w-20 mb-4 border-4 border-primary/20">
-                  <AvatarImage src={testimonial.avatarUrl} alt={testimonial.name} data-ai-hint="person portrait" />
+                  <AvatarImage src={testimonial.avatarUrl} alt={testimonial.name} data-ai-hint={testimonial.aiHintAvatar || "person portrait"} />
                   <AvatarFallback>{testimonial.name.split(" ").map(n => n[0]).join("")}</AvatarFallback>
                 </Avatar>
                 <p className="text-lg italic text-card-foreground/90 mb-4">"{testimonial.quote}"</p>
@@ -144,7 +161,6 @@ export default function TestimonialsSection() {
                 <p className="text-sm text-card-foreground/70">{testimonial.title}, {testimonial.company}</p>
             </Card>
           ))}
-           {/* Manual navigation dots for carousel */}
           <div className="absolute bottom-[-2rem] left-1/2 -translate-x-1/2 flex space-x-2">
             {testimonials.map((_, index) => (
               <button
@@ -159,16 +175,14 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-
-        {/* Success Metrics */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center mb-16 mt-24">
           {successMetrics.map((metric, index) => (
             <div
               key={metric.label}
-              className="bg-muted/30 dark:bg-muted/10 p-6 rounded-xl shadow-lg animate-slide-up"
+              className="bg-muted/30 dark:bg-muted/10 p-6 rounded-xl shadow-lg animate-slide-up hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <metric.icon className="h-10 w-10 text-primary mx-auto mb-3" />
+              <metric.icon className="h-10 w-10 text-primary mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" />
               <p className="text-3xl font-bold text-foreground">
                 <CountUpNumber endValue={metric.value} suffix={metric.suffix} />
               </p>
@@ -177,19 +191,18 @@ export default function TestimonialsSection() {
           ))}
         </div>
 
-        {/* Client Logos */}
         <div className="text-center mb-8">
             <h3 className="text-xl font-semibold text-foreground mb-6">Trusted by Industry Leaders</h3>
         </div>
         <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
           {clientLogos.map((client, index) => (
-            <div key={client.name} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+            <div key={client.name} className="animate-fade-in group" style={{ animationDelay: `${index * 100}ms` }}>
               <Image
                 src={client.logoUrl}
                 alt={client.name}
                 width={120}
                 height={50}
-                className="object-contain h-10 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out opacity-60 hover:opacity-100"
+                className="object-contain h-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out opacity-60 group-hover:opacity-100 group-hover:scale-105"
                 data-ai-hint={client.aiHint}
               />
             </div>

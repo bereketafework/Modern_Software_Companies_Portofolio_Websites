@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -19,9 +20,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Apex Solutions Portfolio",
+  title: "Smart Tech Solution Portfolio",
   description:
-    "Modern Software Development Company Portfolio Website | Apex Solutions",
+    "Modern Software Development Company Portfolio Website | Smart Tech Solution",
   // TODO: Add more specific meta tags, open graph, twitter cards etc.
 };
 
