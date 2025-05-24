@@ -10,7 +10,8 @@ import ScrollToTopButton from "@/components/elements/ScrollToTopButton";
 import ScrollProgressBar from "@/components/elements/ScrollProgressBar";
 import Chatbot from "@/components/elements/Chatbot";
 import { SettingsProvider } from "@/contexts/SettingsContext";
-import { SpeedInsights } from "@vercel/speed-insights/next"; // Added SpeedInsights import
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,7 +61,8 @@ export default function RootLayout({
             <Toaster />
             <ScrollToTopButton />
             <Chatbot />
-            <SpeedInsights /> {/* Added SpeedInsights component */}
+            <SpeedInsights />
+            <Analytics /> {/* Added Vercel Analytics component */}
           </SettingsProvider>
         </ThemeProvider>
       </body>
